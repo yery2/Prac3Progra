@@ -1,7 +1,7 @@
 package classes;
 
 /**
- * Author: Marc Badia
+ * @author Marc Badia
  */
 
 public class Xerrada extends Accio {
@@ -33,6 +33,21 @@ public class Xerrada extends Accio {
     
     public int getValoracions() {
         return valoracions;
+    }
+
+    public Xerrada copia(){
+        Xerrada copiaXerrada = new Xerrada(
+            this.codi, this.titol, this.responsable, this.nAssoc, 
+            this.dataXerrada, this.nAssistents, this.valoracions);
+        return copiaXerrada;
+    }
+
+    public String toString() {
+        return "Xerrada [codi=" + codi 
+        + ", titol=" + titol + ", responsable=" + responsable
+        + ", nAssoc=" + nAssoc + ", dataXerrada=" + dataXerrada
+        + ", nAssistents=" + nAssistents 
+        + ", valoracions=" + valoracions + "]";
     }
     
 }

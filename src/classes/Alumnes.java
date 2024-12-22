@@ -1,5 +1,9 @@
 package classes;
 
+/**
+ * @author Yerai Zarza
+ */
+
 public class Alumnes extends Membres{
     private String ensenyament;
     private int anys;

@@ -1,7 +1,7 @@
 package classes;
 
 /**
- * Author: Pol Caballé, Marc Badia
+ * @author Marc Badia, Pol Caballé
  */
 
 public class LlistaAssociacions {

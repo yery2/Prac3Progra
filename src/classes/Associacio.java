@@ -1,8 +1,9 @@
 package classes;
 
-    /**
- * Author: Núria Yepes Castro
+/**
+ * @author Núria Yepes Castro
  */
+
 public class Associacio {
     private String nomAssociacio;
     private String emailContacte;

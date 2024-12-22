@@ -1,5 +1,7 @@
 package classes;
-
+/**
+ * @author Núria Yepes
+ */
 /**
  * Classe abstracta que representa els membres d'una associació.
  * Conté informació sobre la data d'alta, data de baixa, estat de graduació,

@@ -1,4 +1,7 @@
 package classes;
+/**
+ * @author Yerai Zarza
+ */
 
 public class Professors extends Membres {
     private int despatx;

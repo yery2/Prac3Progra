@@ -1,7 +1,7 @@
 package classes;
 
 /**
- * Author: Pol Caballe
+ * @author Pol Caballé
  */
 
 public class Demostracio extends Accio {

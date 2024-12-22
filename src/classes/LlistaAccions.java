@@ -1,7 +1,7 @@
 package classes;
 
 /**
- * Author: Marc Badia, Pol Caballe
+ * @author Marc Badia, Pol Caballé
  */
 
 public class LlistaAccions {
@@ -15,6 +15,21 @@ public class LlistaAccions {
     }
     public int getNumAccions(){
         return nElem;
+    }
+
+    public LlistaAccions copia(){
+        LlistaAccions copiaLlistaAccions = new LlistaAccions();
+        return copiaLlistaAccions;
+    }
+
+    public String toString() { //cal comprovar que funcioni
+        String str = "";
+        int i=0;
+        for (Accio accio : llistaAccio) {
+            str+=("AccioNumero :"+i+++"=\n");
+            str+=accio.toString();
+        }
+        return str;
     }
 }
 

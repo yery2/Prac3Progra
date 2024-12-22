@@ -1,7 +1,7 @@
 package classes;
 
 /**
- * Author: Marc Badia, Pol Caballé
+ * @author Marc Badia, Pol Caballé
  */
 
 public class Accio {
