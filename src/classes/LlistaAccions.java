@@ -22,16 +22,27 @@ public class LlistaAccions {
         return copiaLlistaAccions;
     }
 
-    public String toString() { //cal comprovar que funcioni
+    public void afegirAccio(Accio accio) {
+        if (nElem < CAPACITAT_INICIAL) {
+            llistaAccio[nElem++] = accio;
+        } else {
+            System.out.println("No es poden afegir més accions, capacitat maxima");
+        }
+    }
+
+    public String toString() { 
         String str = "";
         int i=0;
-        if(llistaAccio!=null)
+        if(llistaAccio!=null) {
             for (Accio accio : llistaAccio) {
-                str += "AccioNumero :" + i++ + "=\n";
-                str += accio.toString() + "\n";
+                if (accio != null) { // Add null check here
+                    str += "AccioNumero: " + i++ + "=\n";
+                    str += accio.toString() + "\n";
+                }
             }
-
-        else str = "No hi ha cap accio";
+        } else {
+            str = "No hi ha cap accio";
+        }
         return str;
     }
 }

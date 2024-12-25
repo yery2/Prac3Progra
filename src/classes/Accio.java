@@ -9,13 +9,13 @@ public class Accio {
     protected String codi = "";    // S'ha de fer metode que a partir de nom assoc. generi codi
     protected String titol;
     protected String responsable;
-    private static int NUM_ACCIONS = 0;
-    protected LlistaAssociacions llistaA = new LlistaAssociacions();
+    protected LlistaAssociacions llistaAss = new LlistaAssociacions();
 
-    public Accio (String c, String t, String r, int nAssoc){
-        
+    public Accio(String t, String r, LlistaAssociacions llistaAss) {
+        this.llistaAss = llistaAss;
         codi = generarCodi(); 
-        titol = t; responsable = r; this.nAssoc = nAssoc;
+        titol = t; 
+        responsable = r; 
     }
 
     public String getCodi(){
@@ -37,8 +37,20 @@ public class Accio {
             char c = llistaAss.getNomAssociacioPosicio(0).charAt(i); 
             digits += c; 
         }
-        }
+        llistaAss.incrementarNombreAccionsPosicio(0);
+        int val = 99+llistaAss.getNumAccionsPosicio(0);
+        digits += val;
         return digits;
+    }
+
+    public String toString() {
+
+        return "Accio{" +
+                "codi='" + codi + '\'' +
+                ", titol='" + titol + '\'' +
+                ", responsable='" + responsable + '\'' +
+                ", nAssoc organitzadores=" + llistaAss.getNElem() +
+                '}';
     }
 
 }

@@ -1,7 +1,11 @@
 import java.util.Scanner;
 
+import classes.Accio;
+import classes.Associacio;
 import classes.Data;
+import classes.LlistaAssociacions;
 import classes.Xerrada;
+import classes.LlistaAccions;
 
 public class main {
     ///
@@ -138,30 +142,64 @@ public class main {
                     System.out.println("\n!!!!!!!!!!!:");
                     System.out.println("50. Comprovació classe Xerrada:\n\n");
                 
-                    // Crear una instancia de Xerrada
-                    Data dataXerrada = new Data(); // Usando el constructor por defecto de Data
-                    Xerrada xerrada = new Xerrada("C001", "Titol de la Xerrada", "Responsable", 10, dataXerrada, 50, (short) 5);
+                   
+                    LlistaAssociacions llistaAssociacions = new LlistaAssociacions();
+                    String[] titulacions = {"GEB", "GEI", "GESST"};
+                    String[] membres = {"Membre1", "Membre2", "Membre3"};
+                    Associacio associacio = new Associacio("Associació de Prova", "email@example.com", titulacions, membres, "President", "Secretari", "Tresorer", 3, 0);
+                    llistaAssociacions.afegirAssoc(associacio);
+                    
+                    
+                    Data dataXerrada = new Data(); 
+                    Xerrada xerrada1 = new Xerrada("Xerrada1", "Toni", dataXerrada, 50, (short) 5, llistaAssociacions);
+                    Xerrada xerrada2 = new Xerrada("Xerrada2", "Albert", dataXerrada, 32, (short) 3, llistaAssociacions);
+                    
+                    System.out.println("Detalls de la Xerrada 1:");
+                    System.out.println(xerrada1.toString());
+                    System.out.println("Detalls de la Xerrada 2:");
+                    System.out.println(xerrada2.toString());
                 
-                    // Mostrar los detalles de la instancia creada
-                    System.out.println("Detalls de la Xerrada creada:");
-                    System.out.println(xerrada.toString());
-                
-                    // Probar los getters
+                    // getters
                     System.out.println("\nProva dels getters:");
-                    System.out.println("Data de la Xerrada: " + xerrada.getDataXerrada());
-                    System.out.println("Nombre d'Assistents: " + xerrada.getNAssistents());
-                    System.out.println("Valoracions: " + xerrada.getValoracions());
+                    System.out.println("Data de la Xerrada: " + xerrada1.getDataXerrada());
+                    System.out.println("Nombre d'Assistents: " + xerrada1.getNAssistents());
+                    System.out.println("Valoracions: " + xerrada1.getValoracions());
                 
-                    // Probar los setters
+                    // setters
                     System.out.println("\nProva dels setters:");
-                    Data novaDataXerrada = new Data(); // Usando el constructor por defecto de Data
-                    xerrada.setDataXerrada(novaDataXerrada);
-                    xerrada.setNAssistents(100);
-                    xerrada.setValoracions((short) 4);
+                    Data novaDataXerrada = new Data(); 
+                    xerrada1.setDataXerrada(novaDataXerrada);
+                    xerrada1.setNAssistents(100);
+                    xerrada1.setValoracions((short) 4);
                 
-                    // Mostrar los detalles después de usar los setters
+                    // Mostrar despres de setters
                     System.out.println("Detalls de la Xerrada després de modificar:");
-                    System.out.println(xerrada.toString());
+                    System.out.println(xerrada1.toString());
+                    break;
+                case 51:
+                    System.out.println("\n!!!!!!!!!!!:");
+                    System.out.println("51. Comprovació classe LlistaAccions:\n\n");
+
+                    
+                    LlistaAssociacions llistaAssociacions51 = new LlistaAssociacions();
+                    String[] titulacions51 = {"GEB", "GEI", "GESST"};
+                    String[] membres51 = {"Membre1", "Membre2", "Membre3"};
+                    Associacio associacio51 = new Associacio("Associació de Prova", "email@example.com", titulacions51, membres51, "President", "Secretari", "Tresorer", 3, 0);
+                    llistaAssociacions51.afegirAssoc(associacio51);
+                   
+                    LlistaAccions llistaAccions = new LlistaAccions();
+                    Accio accio1 = new Accio("Accio1", "Jaume", llistaAssociacions51);
+                    Accio accio2 = new Accio("Accio2", "Miquel", llistaAssociacions51);
+                    llistaAccions.afegirAccio(accio1);
+                    llistaAccions.afegirAccio(accio2);
+
+                    
+                    System.out.println("Detalls de la Llista d'Accions:");
+                    System.out.println(llistaAccions.toString());
+
+                    // getters
+                    System.out.println("\nProva dels getters:");
+                    System.out.println("Nombre d'Accions: " + llistaAccions.getNumAccions());
                     break;
                 default:
                     System.out.println("\nOpcio no valida. Intenta de nou\n");

@@ -10,8 +10,8 @@ public class Demostracio extends Accio {
     private short nVegades;
     private int cost;
 
-    public Demostracio(String c, String t, String r, int nAssoc, Data d, boolean valida, short nVegades, int cost) {
-        super(c, t, r, nAssoc);
+    public Demostracio(String c, String t, String r, int nAssoc, Data d, boolean valida, short nVegades, int cost, LlistaAssociacions llistaA) {
+        super(t, r, llistaA);
         this.dataDisseny = d; this.valida = valida; this.nVegades = nVegades; this.cost = cost;
     }
 
