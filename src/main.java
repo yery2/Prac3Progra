@@ -1,9 +1,16 @@
 import java.util.Scanner;
 
+import classes.Data;
+import classes.Xerrada;
+
 public class main {
     ///
     static Scanner teclat = new Scanner(System.in);
 
+    public static void main(String[] args) {
+        mostrarMenu();
+    }
+    
     private static void mostrarMenu(){
         int opcio;
         do{
@@ -125,6 +132,36 @@ public class main {
                 case 18:
                     System.out.println("\nHeu escollit:");
                     System.out.println("18. Sortir de l'aplicacio. Fins la propera!");
+                    break;
+
+                case 50:
+                    System.out.println("\n!!!!!!!!!!!:");
+                    System.out.println("50. Comprovació classe Xerrada:\n\n");
+                
+                    // Crear una instancia de Xerrada
+                    Data dataXerrada = new Data(); // Usando el constructor por defecto de Data
+                    Xerrada xerrada = new Xerrada("C001", "Titol de la Xerrada", "Responsable", 10, dataXerrada, 50, (short) 5);
+                
+                    // Mostrar los detalles de la instancia creada
+                    System.out.println("Detalls de la Xerrada creada:");
+                    System.out.println(xerrada.toString());
+                
+                    // Probar los getters
+                    System.out.println("\nProva dels getters:");
+                    System.out.println("Data de la Xerrada: " + xerrada.getDataXerrada());
+                    System.out.println("Nombre d'Assistents: " + xerrada.getNAssistents());
+                    System.out.println("Valoracions: " + xerrada.getValoracions());
+                
+                    // Probar los setters
+                    System.out.println("\nProva dels setters:");
+                    Data novaDataXerrada = new Data(); // Usando el constructor por defecto de Data
+                    xerrada.setDataXerrada(novaDataXerrada);
+                    xerrada.setNAssistents(100);
+                    xerrada.setValoracions((short) 4);
+                
+                    // Mostrar los detalles después de usar los setters
+                    System.out.println("Detalls de la Xerrada després de modificar:");
+                    System.out.println(xerrada.toString());
                     break;
                 default:
                     System.out.println("\nOpcio no valida. Intenta de nou\n");

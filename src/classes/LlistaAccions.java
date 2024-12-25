@@ -25,10 +25,13 @@ public class LlistaAccions {
     public String toString() { //cal comprovar que funcioni
         String str = "";
         int i=0;
-        for (Accio accio : llistaAccio) {
-            str+=("AccioNumero :"+i+++"=\n");
-            str+=accio.toString();
-        }
+        if(llistaAccio!=null)
+            for (Accio accio : llistaAccio) {
+                str += "AccioNumero :" + i++ + "=\n";
+                str += accio.toString() + "\n";
+            }
+
+        else str = "No hi ha cap accio";
         return str;
     }
 }

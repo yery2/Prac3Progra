@@ -27,12 +27,24 @@ public class Xerrada extends Accio {
         return dataXerrada;
     }
 
+    public void setDataXerrada(Data dataXerrada) {
+        this.dataXerrada = dataXerrada;
+    }
+
     public int getNAssistents() {
         return nAssistents;
+    }
+
+    public void setNAssistents(int nAssistents) {
+        this.nAssistents = nAssistents;
     }
     
     public int getValoracions() {
         return valoracions;
+    }
+
+    public void setValoracions(short valoracions) {
+        this.valoracions = valoracions;
     }
 
     public Xerrada copia(){
