@@ -31,7 +31,7 @@ public class LlistaAssociacionsSerial {
         }
     }
 
-    public void eliminarAssoc(String nomAssoc) {
+    public void eliminarAssoc(String nomAssoc) { //No funciona bé, Al tenir Asso 1, 2, y 3, si elimino la 2, nomes queda la 3 dues vegades
         for(int i=0; i<nElem; i++){
             if(llista[i].getNomAssociacio().equalsIgnoreCase(nomAssoc)){
                 llista[i] = llista[nElem-1];
@@ -41,9 +41,9 @@ public class LlistaAssociacionsSerial {
         }
     }
 
-    public LlistaAssociacions copiaLlistAssociacio(){
+    public LlistaAssociacionsSerial copiaLlistAssociacio(){
 
-        LlistaAssociacions copia = new LlistaAssociacions();
+        LlistaAssociacionsSerial copia = new LlistaAssociacionsSerial();
         for (int i = 0; i < nElem; i++){
             copia.afegirAssoc(llista[i].copia());
         }
@@ -56,7 +56,7 @@ public class LlistaAssociacionsSerial {
         } else {
             String str="Err:\n";
             if(n<0) str+= "getNomAssociacioPosicio: Assoc no existent: n<0  \n";
-            if(n>=nElem) str+= "getNomAssociacioPosicio: Assoc no existent: n>=nElem  \n";
+            if(n>=nElem) str+= "getNomAssociacioPosicio: Assoc no existent: n>=nElem  \n"+n+ "nElem: " +nElem;
             if(llista[n]==null) str+= "getNomAssociacioPosicio: Assoc no existent:  llista[n] == null  \n";
             return str;
         }
@@ -84,7 +84,7 @@ public class LlistaAssociacionsSerial {
         return nElem;
     }
 
-    private void carregarAssociacions() {
+    public void carregarAssociacions() {
         try (BufferedReader br = new BufferedReader(new FileReader(FILE_PATH))) {
             String line;
             while ((line = br.readLine()) != null) {
@@ -101,13 +101,30 @@ public class LlistaAssociacionsSerial {
         }
     }
 
-    private void guardarAssociacions() {
+    public void guardarAssociacions() {
         try (BufferedWriter bw = new BufferedWriter(new FileWriter(FILE_PATH))) {
-            for (Associacio a : llista) {
-                bw.write(a.toStringSerial() + "\n");
+
+            for (Associacio associacio : llista) {
+                if (associacio != null)
+                    bw.write(associacio.toStringSerial()+ "\n");
             }
         } catch (IOException e) {
             System.out.println("No es pot guardar el fitxer: " + e.getMessage());
         }
+    }
+    public String toString(){
+        String str = "";
+        int i=0;
+        if(llista!=null) {
+            for (Associacio associacio : llista) {
+                if (associacio != null) { 
+                    str += "Associacio Numero: " + i++ + "=\n";
+                    str += associacio.toStringSerial() + "\n"; //Utilitzo el Serial mentre encara no han creat el toString "normal"
+                }
+            }
+        } else {
+            str = "No hi ha cap associacio";
+        }
+        return str;
     }
 }

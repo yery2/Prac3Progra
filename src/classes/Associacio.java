@@ -174,14 +174,17 @@ public class Associacio {
     public String toStringSerial(){
         String membresString = "";
         String titulacionsString = "";
-        for (int i = 0; i < membres.length; i++) {
+        for (int i = 0; i < nombreMemebres; i++) {
             membresString += membres[i] + ",";
         }
         for (int i = 0; i < titulacions.length; i++) {
             titulacionsString += titulacions[i] + ",";
         }
         return nomAssociacio + ";" + emailContacte + ";" + titulacionsString + ";" + membresString + ";" + presidentAssociacio + ";" + secretariAssociacio + ";" + tresorerAssociacio + ";" + nombreMemebres + ";" + nombreAccions;
-    }
+    }   //no sembla que les titulacions funcionin correctament, 
+        //els membres tampoc semblen funcionar de la manera esperada,
+        //el president, secretari i tresorer conten com a nMembres?
+        //te sentit inicialitzar nMembres com a parametre del constructor?
 
 }
 
