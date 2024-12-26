@@ -31,15 +31,16 @@ public class LlistaAssociacionsSerial {
         }
     }
 
-    public void eliminarAssoc(String nomAssoc) { //No funciona bé, Al tenir Asso 1, 2, y 3, si elimino la 2, nomes queda la 3 dues vegades
+    public void eliminarAssoc(String nomAssoc) { 
         for(int i=0; i<nElem; i++){
             if(llista[i].getNomAssociacio().equalsIgnoreCase(nomAssoc)){
-                llista[i] = llista[nElem-1];
-                llista[i-1] = null;
+                llista[i] = llista[nElem-1].copia();
+                llista[nElem-1] = null;
                 nElem--;
+                i=nElem; //condició per sortir del bucle un cop trobar el element a eliminar
             }
         }
-    }
+    } // 1      2      3
 
     public LlistaAssociacionsSerial copiaLlistAssociacio(){
 
@@ -126,5 +127,13 @@ public class LlistaAssociacionsSerial {
             str = "No hi ha cap associacio";
         }
         return str;
+    }
+
+    public boolean equals(LlistaAssociacionsSerial llista2){
+        if(nElem!=llista2.getNElem()) return false;
+        for(int i=0; i<nElem; i++){
+            if(!llista[i].equals(llista2.llista[i])) return false;
+        }
+        return true;
     }
 }

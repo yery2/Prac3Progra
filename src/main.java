@@ -246,6 +246,10 @@ public class main {
                     System.out.println("Llista Associacions Carregades:");
                     System.out.println(llistaCarregada.toString());
                     
+                    if(llistaCarregada.equals(llista))
+                        System.out.println("Les dues llistes són iguals i per tant la serialització ha funcionat correctament");
+                    else    
+                        System.out.println("Les dues llistes no són iguals i per tant la serialització no ha funcionat correctament");
                     break;
                 default:
                     System.out.println("\nOpcio no valida. Intenta de nou\n");

@@ -186,5 +186,11 @@ public class Associacio {
         //el president, secretari i tresorer conten com a nMembres?
         //te sentit inicialitzar nMembres com a parametre del constructor?
 
+        public boolean equals(Associacio a) {
+            return this.toStringSerial().equals(a.toStringSerial());
+        } //cal comprovar si aquest metode pot resultar defectuós
+        //en casos en que una instancia sigui Null, etc.
+        //excepcions?
+
 }
 
