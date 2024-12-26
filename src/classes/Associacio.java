@@ -163,5 +163,25 @@ public class Associacio {
         return copiaAssociacio;
     }
 
+    /**
+     * toString que @return en un string els atributs de la classe
+     * es necesari per guardar les dades en un fitxer
+     * en la classe LlistaAssociacionsSerial.java
+     * format: "nomAssociacio;emailContacte;titulacions;membres;presidentAssociacio;secretariAssociacio;tresorerAssociacio;nombreMemebres;nombreAccions"
+     * on membres/titulacions format: "membre1,membre2,membre3,..."
+     * @author Marc Badia
+     */
+    public String toStringSerial(){
+        String membresString = "";
+        String titulacionsString = "";
+        for (int i = 0; i < membres.length; i++) {
+            membresString += membres[i] + ",";
+        }
+        for (int i = 0; i < titulacions.length; i++) {
+            titulacionsString += titulacions[i] + ",";
+        }
+        return nomAssociacio + ";" + emailContacte + ";" + titulacionsString + ";" + membresString + ";" + presidentAssociacio + ";" + secretariAssociacio + ";" + tresorerAssociacio + ";" + nombreMemebres + ";" + nombreAccions;
+    }
+
 }
 
