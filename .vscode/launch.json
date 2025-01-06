@@ -6,7 +6,11 @@
       "name": "main",
       "request": "launch",
       "mainClass": "main",
+<<<<<<< HEAD
       "projectName": "Prac3Progra_43b5a42c"
+=======
+      "projectName": "Prac3Progra_f5dfebb9"
+>>>>>>> 15358e7c82484416b111de843f9f95d31f5aadc4
     },
     {
       "type": "java",
