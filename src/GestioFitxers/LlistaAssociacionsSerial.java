@@ -1,4 +1,6 @@
-package classes;
+package GestioFitxers;
+
+import classes.Associacio;
 
 import java.io.*;
 import java.util.ArrayList;
