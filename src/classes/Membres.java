@@ -1,4 +1,5 @@
 package classes;
+
 /**
  * @author Núria Yepes
  */
@@ -12,6 +13,9 @@ package classes;
  */
 
  public abstract class Membres {
+    private String[] membres;
+    private int nombreMemebres;
+    private static final int MAX_MEMBRES = 200;
     private Data dataAlta;
     private Data dataBaixa;
     private boolean graduat;
@@ -19,8 +23,6 @@ package classes;
     private String correu;
     //private LlistaAssociacions associacions;
     private int numAssociacions;
-
-
 
     /**
      * Retorna la data d'alta del membre.
@@ -135,6 +137,44 @@ package classes;
         return "Membres [dataAlta=" + dataAlta + ", dataBaixa=" + dataBaixa + ", graduat=" + graduat + ", aliesId="
                 + aliesId + ", correu=" + correu + ", numAssociacions="+ numAssociacions + "]";
                 
+    }
+
+    /**
+     * Mètode per afegir un nou membre a la associacio
+     * @param membre persona interessada que es vol afegir 
+     */
+    public void afegirMembres(String membre){
+        if(nombreMemebres < MAX_MEMBRES){
+            membres[nombreMemebres] = membre;
+            nombreMemebres++;  
+        }else{
+            System.out.println("Ho sentim. No es poden afegir mes membres, no hi ha places disponibles\n");
+        }
+    }
+
+    /**
+     * Mètode per eliminar un membre de la associació
+     * @param membre persona que es vol eliminar
+     */
+    public void eliminarMembres(String membre){
+        for(int i=0; i<nombreMemebres; i++){
+            if (membres[i].equals(membre)) {
+                membres[i] = membres[nombreMemebres-1];     //Movem l'ultim membre de la posició eliminada per no tenir espais lliures
+                membres[nombreMemebres-1] = null;
+                nombreMemebres--;
+                break;
+            }
+        }
+    }
+
+    /**
+     * Mètode per obtenir els membres de l'associacio
+     * @return membres actuals de l'associacio
+     */
+    public String[] obtenirMembres(){
+        String[] membresActuals = new String[nombreMemebres];
+        System.arraycopy(membres, MAX_MEMBRES, membresActuals, 0, nombreMemebres);
+        return membresActuals;
     }
 
     

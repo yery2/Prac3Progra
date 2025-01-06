@@ -6,6 +6,13 @@
       "name": "main",
       "request": "launch",
       "mainClass": "main",
+      "projectName": "Prac3Progra_43b5a42c"
+    },
+    {
+      "type": "java",
+      "name": "main",
+      "request": "launch",
+      "mainClass": "main",
       "projectName": "Prac3Progra_d9eb126b"
     },
     {

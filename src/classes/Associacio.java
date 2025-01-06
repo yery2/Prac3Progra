@@ -12,9 +12,9 @@ public class Associacio {
     private String presidentAssociacio;
     private String secretariAssociacio;
     private String tresorerAssociacio;
-    private int nombreMemebres;
     private int nombreAccions;
-    private static final int MAX_MEMBRES = 200;
+    private int nombreMemebres;
+
 
     /**
      * Constructor per defecte de la classe Associacio
@@ -28,11 +28,9 @@ public class Associacio {
         this.nomAssociacio = nomAssociacio;
         this.emailContacte = emailContacte;
         this.titulacions = new String[]{"GEB", "GEI", "GESST", "BioGEI", "DG GEB-GESST", "extern-ETSE"};
-        this.membres = new String[MAX_MEMBRES];
-        this.nombreMemebres = 0;
-        this.presidentAssociacio = null;
-        this.secretariAssociacio = null;
-        this.tresorerAssociacio = null;
+        this.presidentAssociacio = presidentAssociacio;
+        this.secretariAssociacio = secretariAssociacio;
+        this.tresorerAssociacio = tresorerAssociacio;
     }
 
     /**
@@ -105,53 +103,6 @@ public class Associacio {
     }
 
     /**
-     * Mètode per afegir un nou membre a la associacio
-     * @param membre persona interessada que es vol afegir 
-     */
-    public void afegirMembres(String membre){
-        if(nombreMemebres < MAX_MEMBRES){
-            membres[nombreMemebres] = membre;
-            nombreMemebres++;  
-        }else{
-            System.out.println("Ho sentim. No es poden afegir mes membres, no hi ha places disponibles\n");
-        }
-    }
-
-    /**
-     * Mètode per eliminar un membre de la associació
-     * @param membre persona que es vol eliminar
-     */
-    public void eliminarMembres(String membre){
-        for(int i=0; i<nombreMemebres; i++){
-            if (membres[i].equals(membre)) {
-                membres[i] = membres[nombreMemebres-1];     //Movem l'ultim membre de la posició eliminada per no tenir espais lliures
-                membres[nombreMemebres-1] = null;
-                nombreMemebres--;
-                if (membre.equals(presidentAssociacio)) {
-                    presidentAssociacio = null;
-                }
-                if (membre.equals(secretariAssociacio)) {
-                    secretariAssociacio = null;
-                }
-                if (membre.equals(tresorerAssociacio)) {
-                    tresorerAssociacio = null;
-                }
-                break;
-            }
-        }
-    }
-
-    /**
-     * Mètode per obtenir els membres de l'associacio
-     * @return membres actuals de l'associacio
-     */
-    public String[] obtenirMembres(){
-        String[] membresActuals = new String[nombreMemebres];
-        System.arraycopy(membres, MAX_MEMBRES, membresActuals, 0, nombreMemebres);
-        return membresActuals;
-    }
-
-    /**
      * Mètode per crear una copia de la classe Associacio
      * @return copia de l'associacio
      */
@@ -186,11 +137,12 @@ public class Associacio {
         //el president, secretari i tresorer conten com a nMembres?
         //te sentit inicialitzar nMembres com a parametre del constructor?
 
-        public boolean equals(Associacio a) {
+        public boolean equals(Associacio a){
+            if (a==null) {
+                return false;
+            }
             return this.toStringSerial().equals(a.toStringSerial());
-        } //cal comprovar si aquest metode pot resultar defectuós
-        //en casos en que una instancia sigui Null, etc.
-        //excepcions?
+        }
 
 }
 

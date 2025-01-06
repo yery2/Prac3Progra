@@ -1,8 +1,10 @@
-package classes;
+package GestioFitxers;
 
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
+
+import classes.Associacio;
 
 /**
  * @author Marc Badia, Pol Caballé

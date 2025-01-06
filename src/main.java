@@ -1,10 +1,10 @@
 import java.util.Scanner;
 
+import GestioFitxers.LlistaAssociacionsSerial;
 import classes.Accio;
 import classes.Associacio;
 import classes.Data;
 import classes.LlistaAssociacions;
-import classes.LlistaAssociacionsSerial;
 import classes.Xerrada;
 import classes.LlistaAccions;
 

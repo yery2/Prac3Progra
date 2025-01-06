@@ -53,4 +53,9 @@ public class Accio {
                 '}';
     }
 
+    public Accio copia(){
+        Accio copiaAccio = new Accio(titol, responsable, this.llistaAss);
+        return copiaAccio;
+    }
+
 }
