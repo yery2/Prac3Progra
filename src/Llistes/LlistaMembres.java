@@ -79,7 +79,7 @@ public class LlistaMembres {
         }
         return str;
     }
-
+/*
     public void carregarMembres(){
         BufferedReader br = null; 
         try{
@@ -88,7 +88,7 @@ public class LlistaMembres {
             while ((linia = br.readLine()) != null) {
                 String[] camps = linia.split(";");
                 if (camps.length == 4){
-                    Membres nouMembre = new Membres(camps[0], camps[1], camps[2], Integer.parseInt(camps[3]));
+                    Membres nouMembre = new Membres(camps[0], camps[1], true);
                     afegirMembre(nouMembre);
                 }
             }
@@ -97,8 +97,8 @@ public class LlistaMembres {
         }
     }
 
-
-    /*public void carregarMembres(){
+ */
+    public void carregarMembres(){
         BufferedReader br = null; 
         try{
             br = new BufferedReader(new FileReader(FITXER_MEMBRES));
@@ -119,7 +119,7 @@ public class LlistaMembres {
         } catch (IOException e){
             System.out.println("Hi ha hagut un error en la lectura del fitxer");
         }
-    }*/
+    }
 
     public void guardarMembres() throws IOException {
         BufferedWriter bw = null;

@@ -10,6 +10,7 @@ public class Professors extends Membres {
     private String aliesID;
 
     public Professors(String aliesID, String email, String departament, int despatx){
+        super(aliesID, email, true);
         this.aliesID = aliesID;
         this.email = email;
         this.departament = departament;

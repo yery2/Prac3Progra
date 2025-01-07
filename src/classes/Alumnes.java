@@ -11,6 +11,7 @@ public class Alumnes extends Membres{
     private String aliesID;
 
     public Alumnes(String aliesID, String email, String ensenyament, int anys){
+        super(aliesID, email, false);
         this.aliesID = aliesID;
         this.email = email;
         this.ensenyament = ensenyament;
