@@ -141,7 +141,6 @@ public class LlistaMembres {
             }
         }
         Membres[] result = new Membres[count];
-        System.arraycopy(professors, 0, result, 0, count);
         return result;
     }
 
