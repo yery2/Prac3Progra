@@ -140,4 +140,16 @@ public class LlistaAssociacionsSerial {
         }
         return true;
     }
+
+    /**
+     * Mètode per obtenir una associació en una posició específica de la llista.
+     * @param posicio la posició de l'associació a retornar.
+     * @return la instància de l'associació en la posició especificada, o null si la posició és invàlida.
+     */
+    public Associacio getAssociacio(int posicio) {
+        if (posicio >= 0 && posicio < nElem) {
+            return llista[posicio];
+        }
+        return null;
+    }
 }

@@ -4,16 +4,16 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import java.util.List;
 import Classes.*;
 import GestioFitxers.*;
-
 
 public class AppInterficieGrafica extends JFrame {
     private LlistaAccionsText llistaAccions;
     private LlistaAssociacionsSerial llistaAssociacions;
     private JTextArea textArea;
-    private JComboBox<String> comboBox;
+    private List<JCheckBox> checkBoxes;
 
     public AppInterficieGrafica(LlistaAccionsText llistaAccions, LlistaAssociacionsSerial llistaAssociacions) {
         this.llistaAccions = llistaAccions;
@@ -23,21 +23,26 @@ public class AppInterficieGrafica extends JFrame {
 
     private void initialize() {
         setTitle("Aplicació Gràfica de Demostracions");
-        setSize(600, 400);
+        setSize(1200, 800);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLayout(new BorderLayout());
 
         JPanel panel = new JPanel();
-        panel.setLayout(new FlowLayout());
+        panel.setLayout(new GridLayout(0, 1));
 
-        comboBox = new JComboBox<>();
-        comboBox.addItem("Totes les associacions");
-        for (Entitats entitat : llistaEntitats.getLlistaEntitats()) {
-            if (entitat != null) {
-                comboBox.addItem(entitat.getNom());
+        checkBoxes = new ArrayList<>();
+        for (int i = 0; i < llistaAssociacions.getNElem(); i++) {
+            Associacio associacio = llistaAssociacions.getAssociacio(i);
+            if (associacio != null) {
+                JCheckBox checkBox = new JCheckBox(associacio.getNomAssociacio());
+                checkBoxes.add(checkBox);
+                panel.add(checkBox);
             }
         }
-        panel.add(comboBox);
+
+        JScrollPane scrollPaneCheckBoxes = new JScrollPane(panel);
+        scrollPaneCheckBoxes.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+        scrollPaneCheckBoxes.setPreferredSize(new Dimension(300, 800));
 
         JButton button = new JButton("Mostrar Demostracions");
         button.addActionListener(new ActionListener() {
@@ -46,44 +51,60 @@ public class AppInterficieGrafica extends JFrame {
                 mostrarDemostracions();
             }
         });
-        panel.add(button);
+
+        JPanel buttonPanel = new JPanel();
+        buttonPanel.add(button);
 
         textArea = new JTextArea();
         textArea.setEditable(false);
-        JScrollPane scrollPane = new JScrollPane(textArea);
+        JScrollPane scrollPaneTextArea = new JScrollPane(textArea);
 
-        add(panel, BorderLayout.NORTH);
-        add(scrollPane, BorderLayout.CENTER);
+        add(scrollPaneCheckBoxes, BorderLayout.WEST);
+        add(buttonPanel, BorderLayout.NORTH);
+        add(scrollPaneTextArea, BorderLayout.CENTER);
     }
-
+ 
     private void mostrarDemostracions() {
-        String selectedEntitat = (String) comboBox.getSelectedItem();
         textArea.setText("");
-
-        for (Activitats activitat : llistaActivitats.getLlistaActivitats()) {
-            if (activitat != null && activitat instanceof Demostracions) {
-                Demostracions demostracio = (Demostracions) activitat;
-                if (selectedEntitat.equals("Totes les associacions") || demostracio.getEntitat().getNom().equals(selectedEntitat)) {
-                    textArea.append(demostracio.toString() + "\n\n");
+        LlistaAssociacionsSerial selectedAssociacions = new LlistaAssociacionsSerial();
+        LlistaAccionsText selectedAccions = new LlistaAccionsText();
+        for (JCheckBox checkBox : checkBoxes) {
+            if (checkBox.isSelected()) {
+                for(int i=0; i<llistaAssociacions.getNElem(); i++){
+                    if(llistaAssociacions.getAssociacio(i).getNomAssociacio().equals(checkBox.getText())){
+                        selectedAssociacions.afegirAssoc(llistaAssociacions.getAssociacio(i));
+                    }
                 }
             }
         }
+        /*
+        for (int i=0; i<llistaAccions.getNElem(); i++){
+            if(llistaAccions.getAccio(i).getAssociacio)){
+                selectedAccions.afegirAccio(llistaAccions.getAccio(i));
+            }
+        } */
+/*
+        for (Activitats activitat : llistaAccions.getLlistaActivitats()) {
+            if (activitat != null && activitat instanceof Demostracions) {
+                Demostracions demostracio = (Demostracions) activitat;
+                if (selectedAssociacions.isEmpty() || selectedAssociacions.contains(demostracio.getEntitat().getNomAssociacio())) {
+                    textArea.append(demostracio.toString() + "\n\n");
+                }
+            }
+        } */
     }
 
     public static void main(String[] args) {
         // Crear llistes d'activitats i entitats
-        LlistaEntitats llistaEntitats = new LlistaEntitats(10);
-        LlistaActivitats llistaActivitats = new LlistaActivitats(30);
+        LlistaAssociacionsSerial llistaAssociacions = new LlistaAssociacionsSerial();
+        LlistaAccionsText llistaAccions = new LlistaAccionsText();
 
         // Afegir entitats i activitats (exemple)
-        llistaEntitats.afegir(new Entitats("Generalitat", 496784334, "gen@generalitat.com"));
-        llistaEntitats.afegir(new Entitats("Perritos Guapos", 364735435, "adoptaunperrito@gmail.dog"));
-
-        LocalDate date = LocalDate.of(2023, 10, 10);
-        llistaActivitats.afegir(new Demostracions("Moda", "BCN", 27, date, llistaEntitats.getLlistaEntitats()[0], "Descripció de la demostració"));
+        llistaAssociacions.carregarAssociacions();
+        llistaAccions.carregarAccions();
 
         // Crear i mostrar la interfície gràfica
-        AppInterficieGrafica app = new AppInterficieGrafica(llistaActivitats, llistaEntitats);
+        AppInterficieGrafica app = new AppInterficieGrafica(llistaAccions, llistaAssociacions);
         app.setVisible(true);
     }
 }

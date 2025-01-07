@@ -1,0 +1,21 @@
+A1;Xerrada 1;pr1@example.com;2025-01-01;Associacio 1,Associacio 2;null;5;3;null;true
+A2;Demostració 1;pr2@example.com;2025-02-10;Associacio 3,Associacio 4;300;null;4;true;false
+A3;Xerrada 2;pr3@example.com;2024-12-15;Associacio 5,Associacio 6;null;8;2;null;true
+A4;Demostració 2;pr4@example.com;2025-03-05;Associacio 1,Associacio 2;700;null;5;false;false
+A5;Xerrada 3;pr5@example.com;2024-11-20;Associacio 3,Associacio 5;null;9;4;null;true
+A6;Demostració 3;pr6@example.com;2025-01-25;Associacio 6;300;null;3;true;false
+A7;Xerrada 4;pr7@example.com;2025-02-15;Associacio 4,Associacio 1;null;10;2;null;true
+A8;Demostració 4;pr8@example.com;2024-12-01;Associacio 2,Associacio 3;150;null;6;false;false
+A9;Xerrada 5;pr9@example.com;2025-01-15;Associacio 5,Associacio 2;null;7;3;null;true
+A10;Demostració 5;pr10@example.com;2024-12-30;Associacio 3,Associacio 4;600;null;2;true;false
+A11;Xerrada 6;pr11@example.com;2025-02-20;Associacio 6,Associacio 5;null;9;1;null;true
+A12;Demostració 6;pr12@example.com;2025-03-10;Associacio 4,Associacio 2;450;null;5;false;false
+A13;Xerrada 7;pr13@example.com;2024-11-25;Associacio 3;null;6;3;null;true
+A14;Demostració 7;pr14@example.com;2025-01-05;Associacio 1,Associacio 6;500;null;4;true;false
+A15;Xerrada 8;pr15@example.com;2025-02-28;Associacio 4,Associacio 5;null;3;2;null;true
+A16;Demostració 8;pr16@example.com;2024-12-10;Associacio 2;350;null;7;true;false
+A17;Xerrada 9;pr17@example.com;2025-01-30;Associacio 3,Associacio 1;null;9;5;null;true
+A18;Demostració 9;pr18@example.com;2025-03-20;Associacio 4;400;null;3;false;false
+A19;Xerrada 10;pr19@example.com;2025-02-25;Associacio 1,Associacio 5;null;10;1;null;true
+A20;Demostració 10;pr20@example.com;2024-12-15;Associacio 2,Associacio 3;300;null;4;true;false
+
