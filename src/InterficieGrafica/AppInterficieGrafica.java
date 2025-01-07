@@ -26,7 +26,7 @@ public class AppInterficieGrafica extends JFrame {
         setSize(1200, 800);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLayout(new BorderLayout());
-        System.out.println("AQUI SI");
+        
         JPanel panel = new JPanel();
         panel.setLayout(new GridLayout(0, 1));
 
