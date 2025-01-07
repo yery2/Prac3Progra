@@ -29,25 +29,20 @@ public class LlistaMembres {
             copiaLlistaMembres.llistaMembres[i]=this.llistaMembres[i];
         }
         return copiaLlistaMembres;
-    }
-
-    public void afegirMembre(Membres membre){
-        if (nMembres < MAX_MEM) {
-            llistaMembres[nMembres] = membre;
-            nMembres++;
-            System.out.println("S'ha afegit correctament el membre: " + membre.getAliesId());
-            System.out.println("Nombre de membres actuals: " + nMembres);
-            try{
-                guardarMembres();
-            } catch (IOException e){
-                System.out.println("Error al afegir el membre. Ho sentim.");
-            }
-        } else {
-            System.out.println("\nNo es poden afegir mes membres. S'ha superat la capacitat.");
         }
-    }
 
-    public void eliminarMembre(String aliesId) {
+        public void afegirMembre(Membres membre){
+            if (nMembres < MAX_MEM) {
+                llistaMembres[nMembres] = membre;
+                nMembres++;
+                System.out.println("S'ha afegit correctament el membre: " + membre.getAliesId());
+                System.out.println("Nombre de membres actuals: " + nMembres);
+            } else {
+                System.out.println("\nNo es poden afegir mes membres. S'ha superat la capacitat.");
+            }
+        }
+
+        public void eliminarMembre(String aliesId) {
         for(int i=0; i<nMembres; i++){
             if(llistaMembres[i].getAliesId().equalsIgnoreCase(aliesId)){
                 llistaMembres[i] = llistaMembres[nMembres-1];
@@ -92,12 +87,12 @@ public class LlistaMembres {
                     if (departament.equals("DEIM") || departament.equals("DEEEA")) { // Si el tercer campo es un departament, es un Professor
                         Professors professor = new Professors(camps[0], camps[1], departament, Integer.parseInt(camps[3]));
                         if (nMembres < MAX_MEM) {
-                            llistaMembres[nMembres++] = professor;
+                            afegirMembre(professor);
                         }
                     } else { // Si no, es un Alumne
                         Alumnes alumne = new Alumnes(camps[0], camps[1], camps[2], Integer.parseInt(camps[3]));
                         if (nMembres < MAX_MEM) {
-                            llistaMembres[nMembres++] = alumne;
+                            afegirMembre(alumne);
                         }
                     }
                 }
