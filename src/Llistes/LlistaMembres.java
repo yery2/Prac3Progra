@@ -2,8 +2,9 @@
  * @author Núria Yepes
  */
 
-package classes;
+package Llistes;
 
+import Classes.*;
 import java.io.*;
 
 public class LlistaMembres {

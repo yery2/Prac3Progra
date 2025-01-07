@@ -1,10 +1,10 @@
 package GestioFitxers;
 
-import classes.Associacio;
-
 import java.io.*;
 //import java.util.ArrayList;
 //import java.util.List;
+
+import Classes.Associacio;
 
 //import classes.Associacio;
 

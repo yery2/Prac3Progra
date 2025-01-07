@@ -1,19 +1,16 @@
+package ProgramaPrincipal;
 import java.util.Scanner;
 
+import Classes.Accio;
+import Classes.Alumnes;
+import Classes.Associacio;
+import Classes.Data;
+import Classes.Professors;
+import Classes.Xerrada;
 import GestioFitxers.LlistaAssociacionsSerial;
-import classes.Accio;
-import classes.Alumnes;
-import classes.Associacio;
-import classes.Data;
-
-import classes.LlistaAssociacions;
-import classes.LlistaMembres;
-import classes.Professors;
-import classes.Xerrada;
-
-import classes.LlistaAccions;
-//import classes.LlistaAssociacions;
-//import classes.Xerrada;
+import Llistes.LlistaAccions;
+import Llistes.LlistaAssociacions;
+import Llistes.LlistaMembres;
 
 public class programaPrincipal {
     ///

@@ -1,4 +1,6 @@
-package classes;
+package Classes;
+
+import Llistes.LlistaAssociacions;
 
 /**
  * @author Núria Yepes

@@ -1,5 +1,6 @@
-package classes;
+package Llistes;
 
+import Classes.*;
 /**
  * @author Marc Badia, Pol Caballé
  */

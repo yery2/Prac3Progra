@@ -7,8 +7,8 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.StringTokenizer;
 
-import classes.Accio;
-import classes.LlistaAssociacions;
+import Classes.Accio;
+import Llistes.LlistaAssociacions;
 
 /**
  * @author Yeray Zarza
