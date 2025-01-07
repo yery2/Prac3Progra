@@ -1,4 +1,4 @@
-package AplicacioIG;
+/*package AplicacioIG;
 
 import java.time.LocalDate;
 import Clases.*;
@@ -64,3 +64,4 @@ public class AppIG {
     }
     
 }
+*/

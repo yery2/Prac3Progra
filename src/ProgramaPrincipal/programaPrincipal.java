@@ -24,26 +24,26 @@ public class programaPrincipal {
         int opcio;
         Scanner scanner = new Scanner(System.in);
         do{
-            System.out.println("\nEscull una opcio del menu:\n");
+            System.out.println("\nEscull una opcio del menu:");
             System.out.println("\nMenu d'opcions:");
-            System.out.println("\n1. Mostrar les dades de la llista d'associacions:");
-            System.out.println("\n2. Mostrar les dades de la llista de membres que formen part d’una associació (afegint filtre per a professors, alumnes o ambdós):");
-            System.out.println("\n3. Mostrar les dades de la llista de membres actius, que formen part de qualsevol associació (afegint filtre per a professors, alumnes o ambdós):");
-            System.out.println("\n4. Mostrar les dades de la llista d’accions (afegint filtre o no per tipus d’acció):");
-            System.out.println("\n5. Obtenir i mostrar la llista d’accions que ofereix una associació concreta:");
-            System.out.println("\n6. Obtenir i mostrar la llista de les xerrades que es duen a terme en una franja de dates indicada per teclat:");
-            System.out.println("\n7. Afegir una nova associació:");
-            System.out.println("\n8. Alta d’un membre a una associació:");
-            System.out.println("\n9. Afegir una nova xerrada:");
-            System.out.println("\n10. Afegir una nova demostració:");
-            System.out.println("\n11. Consultar i mostrar les dades de les demostracions que es consideren no actives:");
-            System.out.println("\n12. Calcular la persona més activa (la que participa en més associacions):");
-            System.out.println("\n13. Consultar i mostrar les dades de les xerrades que ha tingut més d’un cert nombre indicat d’assistents:");
-            System.out.println("\n14. Valorar una xerrada per part d’un assistent:");
-            System.out.println("\n15. Consultar i mostrar la xerrada que està millor valorada:");
-            System.out.println("\n16. Mostrar les dades de les xerrades que farà una persona concreta:");
-            System.out.println("\n17. Donar de baixa les demostracions que no estiguin actives i que es van dissenyar abans d’una certa data:");
-            System.out.println("\n18. Sortir de l'aplicacio:");
+            System.out.println("1. Mostrar les dades de la llista d'associacions:");
+            System.out.println("2. Mostrar les dades de la llista de membres que formen part d’una associació (afegint filtre per a professors, alumnes o ambdós):");
+            System.out.println("3. Mostrar les dades de la llista de membres actius, que formen part de qualsevol associació (afegint filtre per a professors, alumnes o ambdós):");
+            System.out.println("4. Mostrar les dades de la llista d’accions (afegint filtre o no per tipus d’acció):");
+            System.out.println("5. Obtenir i mostrar la llista d’accions que ofereix una associació concreta:");
+            System.out.println("6. Obtenir i mostrar la llista de les xerrades que es duen a terme en una franja de dates indicada per teclat:");
+            System.out.println("7. Afegir una nova associació:");
+            System.out.println("8. Alta d’un membre a una associació:");
+            System.out.println("9. Afegir una nova xerrada:");
+            System.out.println("10. Afegir una nova demostració:");
+            System.out.println("11. Consultar i mostrar les dades de les demostracions que es consideren no actives:");
+            System.out.println("12. Calcular la persona més activa (la que participa en més associacions):");
+            System.out.println("13. Consultar i mostrar les dades de les xerrades que ha tingut més d’un cert nombre indicat d’assistents:");
+            System.out.println("14. Valorar una xerrada per part d’un assistent:");
+            System.out.println("15. Consultar i mostrar la xerrada que està millor valorada:");
+            System.out.println("16. Mostrar les dades de les xerrades que farà una persona concreta:");
+            System.out.println("17. Donar de baixa les demostracions que no estiguin actives i que es van dissenyar abans d’una certa data:");
+            System.out.println("18. Sortir de l'aplicacio:\n");
     
             opcio = Integer.parseInt(teclat.nextLine());
     
@@ -286,6 +286,16 @@ public class programaPrincipal {
                     else    
                         System.out.println("Les dues llistes no són iguals i per tant la serialització no ha funcionat correctament");
                     break;
+
+                case 60:
+                    System.out.println("\n!!!!!!!!!!!:");
+                    System.out.println("60. Comprovació professor/alumne:\n\n");
+                    LlistaMembres professorOAlumne = new LlistaMembres();
+                    professorOAlumne.carregarMembres();
+                    professorOAlumne.toString();
+                    System.out.println(professorOAlumne.toString());
+                    break;
+
                 default:
                     System.out.println("\nOpcio no valida. Intenta de nou\n");
                     break;
