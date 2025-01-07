@@ -11,7 +11,7 @@ public class Accio {
     protected String responsable;
     protected LlistaAssociacions llistaAss = new LlistaAssociacions();
 
-    public Accio(String t, String r, LlistaAssociacions llistaAss) {
+    public Accio(String t, String r, LlistaAssociacions llistaAss) {//String = "1;4;5"
         this.llistaAss = llistaAss;
         codi = generarCodi(); 
         titol = t; 

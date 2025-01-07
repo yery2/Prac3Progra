@@ -124,4 +124,25 @@ public class LlistaMembres {
         }
      }
 
+    /**
+     * Mètode per obtenir tots els professors de la llista de membres.
+     * @return una llista de professors.
+     */
+    public Membres[] membresAProfessors() {
+        Membres[] professors = new Membres[nMembres];
+        int count = 0;
+
+        for (int i = 0; i < nMembres; i++) {
+            //String  departament = llistaMembres[i].getDepartament();
+            String  departament="";
+            Membres membre = llistaMembres[i];
+            if (departament.equals("DEIM") || departament.equals("DEEEA")) {
+                professors[count++] = membre;
+            }
+        }
+        Membres[] result = new Membres[count];
+        System.arraycopy(professors, 0, result, 0, count);
+        return result;
+    }
+
 }

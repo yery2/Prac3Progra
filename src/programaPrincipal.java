@@ -2,10 +2,13 @@ import java.util.Scanner;
 
 import GestioFitxers.LlistaAssociacionsSerial;
 import classes.Accio;
+import classes.Alumnes;
 import classes.Associacio;
 import classes.Data;
 
 import classes.LlistaAssociacions;
+import classes.LlistaMembres;
+import classes.Professors;
 import classes.Xerrada;
 
 import classes.LlistaAccions;
@@ -51,27 +54,39 @@ public class programaPrincipal {
                 case 1:
                     System.out.println("\nHeu escollit:");
                     System.out.println("1.Mostrar les dades de la llista d'associacions):\n\n");
-                    //
+                    LlistaAssociacionsSerial llistaCarregada1 = new LlistaAssociacionsSerial();
+                    llistaCarregada1.carregarAssociacions();
+                    System.out.println(llistaCarregada1.toString());
                     break;
                 case 2:
                     System.out.println("\nHeu escollit:");
                     System.out.println("2. Mostrar les dades de la llista de membres que formen part d’una associació (afegint filtre per a professors, alumnes o ambdós):\n");
-                    //
+                    LlistaMembres llistaMembres2 = new LlistaMembres();
+                    llistaMembres2.carregarMembres();
+                    for(int i = 0; i<llistaMembres2.getNumMembres(); i++){/* 
+                        if (llistaMembres2.getInstanceAt(i).equals("DEIM") || departament.equals("DEEEA")){ // Si el tercer campo es un departament, es un Professor
+                            Professors professor = new Professors(camps[0], camps[1], departament, Integer.parseInt(camps[3]));
+                            afegirMembre(professor);
+                        } else { // Si no, es un Professor
+                            Alumnes alumne = new Alumnes(camps[0], camps[1], camps[2], Integer.parseInt(camps[3]));
+                            afegirMembre(alumne);
+                        }*/
+                    }
                     break;
                 case 3:
                     System.out.println("\nHeu escollit:");
                     System.out.println("3. Mostrar les dades de la llista de membres actius, que formen part de qualsevol associació (afegint filtre per a professors, alumnes o ambdós):\n");
-                    //
+                    //Marc  
                     break;
                 case 4:
                     System.out.println("\nHeu escollit:");
                     System.out.println("4. Mostrar les dades de la llista d’accions (afegint filtre o no per tipus d’acció):\n\n");
-                    //
+                    //Nuria
                     break;
                 case 5:
                     System.out.println("\nHeu escollit:");
                     System.out.println("5. Obtenir i mostrar la llista d’accions que ofereix una associació concreta:\n");
-                    //
+                    //Yeray
                     break;
                 case 6:
                     System.out.println("\nHeu escollit:");
