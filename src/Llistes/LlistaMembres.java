@@ -79,45 +79,39 @@ public class LlistaMembres {
         }
         return str;
     }
-/*
-    public void carregarMembres(){
-        BufferedReader br = null; 
-        try{
-            br = new BufferedReader(new FileReader(FITXER_MEMBRES));
-            String linia;
-            while ((linia = br.readLine()) != null) {
-                String[] camps = linia.split(";");
-                if (camps.length == 4){
-                    Membres nouMembre = new Membres(camps[0], camps[1], true);
-                    afegirMembre(nouMembre);
-                }
-            }
-        } catch (IOException e){
-            System.out.println("Hi ha hagut un error en la lectura del fitxer");
-        }
-    }
 
- */
-    public void carregarMembres(){
-        BufferedReader br = null; 
-        try{
+    public void carregarMembres() {
+        BufferedReader br = null;
+        try {
             br = new BufferedReader(new FileReader(FITXER_MEMBRES));
             String linia;
             while ((linia = br.readLine()) != null) {
                 String[] camps = linia.split(";");
-                if (camps.length == 4){
+                if (camps.length == 4) {
                     String departament = camps[2];
-                    if (departament.equals("DEIM") || departament.equals("DEEEA")){ // Si el tercer campo es un departament, es un Professor
+                    if (departament.equals("DEIM") || departament.equals("DEEEA")) { // Si el tercer campo es un departament, es un Professor
                         Professors professor = new Professors(camps[0], camps[1], departament, Integer.parseInt(camps[3]));
-                        afegirMembre(professor);
+                        if (nMembres < MAX_MEM) {
+                            llistaMembres[nMembres++] = professor;
+                        }
                     } else { // Si no, es un Alumne
                         Alumnes alumne = new Alumnes(camps[0], camps[1], camps[2], Integer.parseInt(camps[3]));
-                        afegirMembre(alumne);
+                        if (nMembres < MAX_MEM) {
+                            llistaMembres[nMembres++] = alumne;
+                        }
                     }
                 }
             }
-        } catch (IOException e){
+        } catch (IOException e) {
             System.out.println("Hi ha hagut un error en la lectura del fitxer");
+        } finally {
+            try {
+                if (br != null) {
+                    br.close();
+                }
+            } catch (IOException e) {
+                System.out.println("Error al tancar el fitxer");
+            }
         }
     }
 
