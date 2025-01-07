@@ -18,7 +18,7 @@ package classes;
     private static final int MAX_MEMBRES = 200;
     private Data dataAlta;
     private Data dataBaixa;
-    private boolean graduat;
+    private boolean professor;
     private String aliesId;
     private String correu;
     private LlistaAssociacions associacions;
@@ -27,12 +27,12 @@ package classes;
     /**
      * Constructor per defecte
      */
-    public Membres() {
+    public Membres(String aliesID, String correu, boolean professor) {
         this.membres = new String[MAX_MEMBRES]; 
         this.nombreMemebres = 0; 
         this.dataAlta = null; 
         this.dataBaixa = null;
-        this.graduat = false; 
+        this.professor = false; 
         this.aliesId = ""; 
         this.correu = "";
         this.associacions = null;
@@ -55,15 +55,6 @@ package classes;
      */
     public Data getDataBaixa() {
         return dataBaixa;
-    }
-
-    /**
-     * Retorna si el membre està graduat o no.
-     * 
-     * @return True si el membre està graduat, false en cas contrari.
-     */
-    public boolean isGraduat() {
-        return graduat;
     }
 
     /**
@@ -111,14 +102,6 @@ package classes;
         this.dataBaixa = dataBaixa;
     }
 
-    /**
-     * Estableix si el membre està graduat o no.
-     * 
-     * @param graduat True si el membre està graduat, false en cas contrari.
-     */
-    public void setGraduat(boolean graduat) {
-        this.graduat = graduat;
-    }
 
     /**
      * Estableix l'identificador alies del membre.
@@ -146,12 +129,21 @@ package classes;
     public void setNumAssociacions(int numAssociacions) {
         this.numAssociacions = numAssociacions;
     }
-
     
     public String toString() {
-        return "Membres [dataAlta=" + dataAlta + ", dataBaixa=" + dataBaixa + ", graduat=" + graduat + ", aliesId="
+        return "Membres [dataAlta=" + dataAlta + ", dataBaixa=" + dataBaixa + ", professor=" + professor + ", aliesId="
                 + aliesId + ", correu=" + correu + ", numAssociacions="+ numAssociacions + "]";
                 
+    }
+
+    /**
+     * Retorna si el membre és professor o no.
+     * 
+     * @return True si el membre és un professor, false en cas contrari.
+     */
+    public boolean isProfessor() {
+        
+        return professor;
     }
 
     /**

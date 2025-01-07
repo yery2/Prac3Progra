@@ -87,11 +87,29 @@ public class LlistaMembres {
             while ((linia = br.readLine()) != null) {
                 String[] camps = linia.split(";");
                 if (camps.length == 4){
+                    Membres nouMembre = new Membres(camps[0], camps[1], camps[2], Integer.parseInt(camps[3]));
+                    afegirMembre(nouMembre);
+                }
+            }
+        } catch (IOException e){
+            System.out.println("Hi ha hagut un error en la lectura del fitxer");
+        }
+    }
+
+
+    /*public void carregarMembres(){
+        BufferedReader br = null; 
+        try{
+            br = new BufferedReader(new FileReader(FITXER_MEMBRES));
+            String linia;
+            while ((linia = br.readLine()) != null) {
+                String[] camps = linia.split(";");
+                if (camps.length == 4){
                     String departament = camps[2];
                     if (departament.equals("DEIM") || departament.equals("DEEEA")){ // Si el tercer campo es un departament, es un Professor
                         Professors professor = new Professors(camps[0], camps[1], departament, Integer.parseInt(camps[3]));
                         afegirMembre(professor);
-                    } else { // Si no, es un Professor
+                    } else { // Si no, es un Alumne
                         Alumnes alumne = new Alumnes(camps[0], camps[1], camps[2], Integer.parseInt(camps[3]));
                         afegirMembre(alumne);
                     }
@@ -100,7 +118,7 @@ public class LlistaMembres {
         } catch (IOException e){
             System.out.println("Hi ha hagut un error en la lectura del fitxer");
         }
-    }
+    }*/
 
     public void guardarMembres() throws IOException {
         BufferedWriter bw = null;
