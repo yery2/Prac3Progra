@@ -21,8 +21,23 @@ package classes;
     private boolean graduat;
     private String aliesId;
     private String correu;
-    //private LlistaAssociacions associacions;
+    private LlistaAssociacions associacions;
     private int numAssociacions;
+
+    /**
+     * Constructor per defecte
+     */
+    public Membres() {
+        this.membres = new String[MAX_MEMBRES]; 
+        this.nombreMemebres = 0; 
+        this.dataAlta = null; 
+        this.dataBaixa = null;
+        this.graduat = false; 
+        this.aliesId = ""; 
+        this.correu = "";
+        this.associacions = null;
+        this.numAssociacions = 0; 
+    }
 
     /**
      * Retorna la data d'alta del membre.
