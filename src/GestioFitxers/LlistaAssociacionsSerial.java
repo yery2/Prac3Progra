@@ -153,6 +153,7 @@ public class LlistaAssociacionsSerial {
         return null;
     }
 
+
     /**
      * Mètode per carregar les associacions des del fitxer en les posicions especificades i emmagatzemar-les en una llista.
      * @param posicions un array d'enters que conté les línies del fitxer a extreure.
@@ -167,8 +168,13 @@ public class LlistaAssociacionsSerial {
             while ((line = br.readLine()) != null && posIndex < posicions.length) {
                 if (currentLine == posicions[posIndex]) {
                     String[] data = line.split(";");
-                    String[] membres = data[2].split(",");
-                    String[] titulacions = data[3].split(",");
+                    if (data.length < 9) {
+                        System.out.println("Línia incorrecta: " + line);
+                        posIndex++;
+                        continue; // Salta a la siguiente línea
+                    }
+                    String[] membres = data[2].isEmpty() ? new String[0] : data[2].split(",");
+                    String[] titulacions = data[3].isEmpty() ? new String[0] : data[3].split(",");
                     Associacio a = new Associacio(data[0], data[1], membres, titulacions, data[4], data[5], data[6], Integer.parseInt(data[7]), Integer.parseInt(data[8]));
                     llistaAssociacions.afegirAssoc(a);
                     posIndex++;
@@ -177,6 +183,8 @@ public class LlistaAssociacionsSerial {
             }
         } catch (IOException e) {
             System.out.println("No es pot carregar el fitxer: " + e.getMessage());
+        } catch (NumberFormatException e) {
+            System.out.println("Error en el format numèric: " + e.getMessage());
         }
         return llistaAssociacions;
     }

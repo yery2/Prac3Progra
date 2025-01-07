@@ -65,6 +65,8 @@ public class AppInterficieGrafica extends JFrame {
     }
  
     private void mostrarDemostracions() {
+        LlistaAssociacionsSerial llistaCarregada1 = new LlistaAssociacionsSerial();
+        llistaCarregada1.carregarAssociacions();
         textArea.setText("");
         LlistaAssociacionsSerial selectedAssociacions = new LlistaAssociacionsSerial();
         LlistaAccionsText selectedAccions = new LlistaAccionsText();
@@ -77,6 +79,13 @@ public class AppInterficieGrafica extends JFrame {
                 }
             }
         }
+/*
+        LlistaAssociacionsSerial selectedAssociacionsComp = new LlistaAssociacionsSerial();
+        for (int i=0; i<llistaAccions.getNElem(); i++){
+            if(llistaAccions.getAccio(i)){
+                selectedAccions.afegirAccio(llistaAccions.getAccio(i));
+            }
+        } */
         /*
         for (int i=0; i<llistaAccions.getNElem(); i++){
             if(llistaAccions.getAccio(i).getAssociacio)){
@@ -101,7 +110,7 @@ public class AppInterficieGrafica extends JFrame {
 
         // Afegir entitats i activitats (exemple)
         llistaAssociacions.carregarAssociacions();
-        //llistaAccions.carregarAccions();
+        llistaAccions.carregarAccions();
 
         // Crear i mostrar la interfície gràfica
         AppInterficieGrafica app = new AppInterficieGrafica(llistaAccions, llistaAssociacions);

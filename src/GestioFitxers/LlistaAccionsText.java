@@ -104,7 +104,8 @@ public class LlistaAccionsText {
             System.out.println("Error en el format de dades numèriques: " + e.getMessage());
         }
     }*/
-    public void carregarAccions(String fitxer) {
+    public void carregarAccions() {
+        String fitxer = "accions.csv";
         BufferedReader br = null;
         try {
             br = new BufferedReader(new FileReader(fitxer));
@@ -113,6 +114,9 @@ public class LlistaAccionsText {
             while ((linia = br.readLine()) != null) {
                 
                 String[] camps = linia.split(";");
+                if (camps.length < 10) {
+                    System.out.println("Línia incorrecta: " + linia);
+                }
                 String codi = camps[0];
                 String titol = camps[1];
                 String responsable = camps[2];
@@ -138,7 +142,7 @@ public class LlistaAccionsText {
                 if (esDemostracio == 0) {
                     ac = new Xerrada(codi, titol,  responsable, n, data, valida, nVegVal, cost, posicions);
                 } else {
-                    ac = new Xerrada(codi, titol,  responsable, n, data, valida, nVegVal, cost, posicions);
+                    ac = new Demostracio(codi, titol,  responsable, n, data, valida, nVegVal, cost, posicions);
                 }
 
                 afegirAccio(ac);
