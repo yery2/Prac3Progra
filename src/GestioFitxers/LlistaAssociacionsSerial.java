@@ -3,10 +3,10 @@ package GestioFitxers;
 import classes.Associacio;
 
 import java.io.*;
-import java.util.ArrayList;
-import java.util.List;
+//import java.util.ArrayList;
+//import java.util.List;
 
-import classes.Associacio;
+//import classes.Associacio;
 
 /**
  * @author Marc Badia, Pol Caballé

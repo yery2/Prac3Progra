@@ -72,7 +72,7 @@ public class LlistaAccionsText {
                 String responsable = st.nextToken();
                 
                 
-                int idAssociacio = Integer.parseInt(st.nextToken());
+                //int idAssociacio = Integer.parseInt(st.nextToken());
                 LlistaAssociacions llistaAs = new LlistaAssociacions();
     
                 Accio ac = new Accio(titol, responsable, llistaAs);

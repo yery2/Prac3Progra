@@ -9,10 +9,10 @@ import classes.LlistaAssociacions;
 import classes.Xerrada;
 
 import classes.LlistaAccions;
-import classes.LlistaAssociacions;
-import classes.Xerrada;
+//import classes.LlistaAssociacions;
+//import classes.Xerrada;
 
-public class main {
+public class programaPrincipal {
     ///
     static Scanner teclat = new Scanner(System.in);
 
@@ -22,6 +22,7 @@ public class main {
     
     private static void mostrarMenu(){
         int opcio;
+        Scanner scanner = new Scanner(System.in);
         do{
             System.out.println("\nEscull una opcio del menu:\n");
             System.out.println("\nMenu d'opcions:");
@@ -92,7 +93,25 @@ public class main {
                 case 9:
                     System.out.println("\nHeu escollit:");
                     System.out.println("9. Afegir una nova xerrada:\n\n");
-                    //
+
+                    System.out.println("Afegeix el codi:");
+                    int codi = scanner.nextInt();
+                    System.out.println("\nAfegeix el titol:");
+                    String titol = scanner.next();
+                    System.out.println("\nAfegeix el responsable:");
+                    String responsable = scanner.next();
+                    System.out.println("\nAfegeix el numero d'assistents:");
+                    int nAssistents = scanner.nextInt();
+                    System.out.println("\nAfegeix la valoracio:");
+                    //int valora = scanner.nextInt();
+                    //System.out.println("Afegeix l'associacio organitzadora:\n");
+                    //String llistaAssociacions = scanner.next();
+                    //Data dataXerrada = dataXerrada.Copia(null);
+                    //Xerrada xerrada = xerrada.copia(titol, responsable, dataXerrada, nAssistents, valora, llistaAssociacions);
+                    
+                    //System.out.println(xerrada.toString());
+                    System.out.println("Professors [alies=" + codi + "email institucional=" + titol + ", departament=" + responsable + ", despatx=" + nAssistents + "]");
+            
                     break;
                 case 10:
                     System.out.println("\nHeu escollit:");
@@ -148,7 +167,7 @@ public class main {
                     System.out.println("50. Comprovació classe Xerrada:\n\n");
                 
                    
-                    LlistaAssociacions llistaAssociacions = new LlistaAssociacions();
+                    /*LlistaAssociacions llistaAssociacions = new LlistaAssociacions();
                     String[] titulacions = {"GEB", "GEI", "GESST"};
                     String[] membres = {"Membre1", "Membre2", "Membre3"};
                     Associacio associacio = new Associacio("Associació de Prova", "email@example.com", titulacions, membres, "President", "Secretari", "Tresorer", 3, 0);
@@ -180,7 +199,7 @@ public class main {
                     // Mostrar despres de setters
                     System.out.println("Detalls de la Xerrada després de modificar:");
                     System.out.println(xerrada1.toString());
-                    break;
+                    break;*/
                 case 51:
                     System.out.println("\n!!!!!!!!!!!:");
                     System.out.println("51. Comprovació classe LlistaAccions:\n\n");
