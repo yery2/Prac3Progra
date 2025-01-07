@@ -14,7 +14,10 @@ public class Demostracio extends Accio {
 
     public Demostracio(String c, String t, String r, int nAssoc, Data d, boolean valida, short nVegades, int cost, int[] posicionsAssociacions) {
         super(t, r, posicionsAssociacions);
-        this.dataDisseny = d; this.valida = valida; this.nVegades = nVegades; this.cost = cost;
+        this.dataDisseny = d; 
+        this.valida = valida; 
+        this.nVegades = nVegades; 
+        this.cost = cost;
     } 
 
     public Data getDataDisseny () {

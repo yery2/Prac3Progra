@@ -116,26 +116,29 @@ public class LlistaAccionsText {
                 String codi = camps[0];
                 String titol = camps[1];
                 String responsable = camps[2];
-                String[] posicionsStr = camps[3].split(",");
+                String[] posicionsStr = camps[8].split(",");
                 int[] posicions = new int[posicionsStr.length];
                 for (int i = 0; i < posicionsStr.length; i++) {
                     posicions[i] = Integer.parseInt(posicionsStr[i]);
                 }
-
+                int esDemostracio = Integer.parseInt(camps[9]);
+                int n = Integer.parseInt(camps[3]);
+                String[] dat = camps[4].split("-");
+                Data data = new Data();
+                data.setData(Integer.parseInt(dat[2]), Integer.parseInt(dat[1]), Integer.parseInt(dat[0]));
+                boolean valida = Boolean.parseBoolean(camps[5]);
+                Short nVegVal = Short.parseShort(camps[6]);
+                int cost = Integer.parseInt(camps[7]);
 
                 //String[] associacions = nomAssociacions.split(",");
                 //Associacio assoc = new Associacio(codi, responsable, data, associacions, nomAssociacions, nomAssociacions, nomAssociacions, valoracions, vegades);
                 //llistaAs.afegirAssoc(assoc);
                 Accio ac = new Accio(titol, responsable, posicions);
                 
-                if (esXerrada) {
-                    Data dataXerrada = new Data();
-                    dataXerrada.setData(Integer.parseInt(data[2]), Integer.parseInt(data[1]), Integer.parseInt(data[0]));
-                    ac = new Xerrada(titol, responsable, dataXerrada, NumAssistents, val, llistaAs);
+                if (esDemostracio == 0) {
+                    ac = new Xerrada(codi, titol,  responsable, n, data, valida, nVegVal, cost, posicions);
                 } else {
-                    Data dataDisseny = new Data();
-                    dataDisseny.setData(Integer.parseInt(data[2]), Integer.parseInt(data[1]), Integer.parseInt(data[0]));
-                    ac = new Demostracio(titol, responsable, dataDisseny, vegades, valida, valoracions, cost, llistaAs);
+                    ac = new Xerrada(codi, titol,  responsable, n, data, valida, nVegVal, cost, posicions);
                 }
 
                 afegirAccio(ac);
