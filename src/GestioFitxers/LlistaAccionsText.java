@@ -15,7 +15,7 @@ import Llistes.LlistaAssociacions;
  */
 
 public class LlistaAccionsText {
-    private static final String FILE_PATH = "associacions.csv";
+    private static final String FILE_PATH = "accions.csv";
     private int nElem;
     private Accio[] llista;
     private static final int CAPACITAT_INICIAL = 100; // Capacitat inicial de la llista
@@ -61,6 +61,26 @@ public class LlistaAccionsText {
             copia.afegirAccio(llista[i].copia());
         }
         return copia;
+    }
+
+    /**
+     * Mètode per obtenir una acció en una posició específica de la llista.
+     * @param posicio la posició de l'acció a retornar.
+     * @return la instància de l'acció en la posició especificada, o null si la posició és invàlida.
+     */
+    public Accio getAccio(int posicio) {
+        if (posicio >= 0 && posicio < nElem) {
+            return llista[posicio];
+        }
+        return null;
+    }
+
+    /**
+     * Mètode per obtenir el nombre d'elements en la llista.
+     * @return el nombre d'elements en la llista.
+     */
+    public int getNElem() {
+        return nElem;
     }
 
     public void carregarAccions() {
