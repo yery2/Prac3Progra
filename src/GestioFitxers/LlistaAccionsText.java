@@ -104,44 +104,37 @@ public class LlistaAccionsText {
             System.out.println("Error en el format de dades numèriques: " + e.getMessage());
         }
     }*/
-    public void carregarAccions() {
-        try (BufferedReader br = new BufferedReader(new FileReader(FILE_PATH))) {
-            String line;
-            while ((line = br.readLine()) != null) {
-                StringTokenizer st = new StringTokenizer(line, ";");
-    
-                String codi = st.nextToken();
-                String titol = st.nextToken();
-                String responsable = st.nextToken();
-                String[] dateParts = st.nextToken().split("-");
-                int[] data = new int[3];
-                for (int i = 0; i < dateParts.length; i++) {
-                data[i] = Integer.parseInt(dateParts[i]);
-                }
-                String nomAssociacions = st.nextToken();
-                int cost = Integer.parseInt(st.nextToken());
-                short valoracions = Short.parseShort(st.nextToken());
-                int vegades = Integer.parseInt(st.nextToken());
-                boolean valida = Boolean.parseBoolean(st.nextToken());
-                boolean esXerrada = Boolean.parseBoolean(st.nextToken());
+    public void carregarAccions(String fitxer) {
+        BufferedReader br = null;
+        try {
+            br = new BufferedReader(new FileReader(fitxer));
+            String linia;
+            LlistaAssociacions llistaAs = new LlistaAssociacions();
+            while ((linia = br.readLine()) != null) {
                 
-    
-                String[] associacions = nomAssociacions.split(",");
-                LlistaAssociacions llistaAs = new LlistaAssociacions();
-                for (String assoc : associacions) {
-                      
+                String[] camps = linia.split(";");
+                String codi = camps[0];
+                String titol = camps[1];
+                String responsable = camps[2];
+                String[] posicionsStr = camps[3].split(",");
+                int[] posicions = new int[posicionsStr.length];
+                for (int i = 0; i < posicionsStr.length; i++) {
+                    posicions[i] = Integer.parseInt(posicionsStr[i]);
                 }
-                
 
+
+                //String[] associacions = nomAssociacions.split(",");
+                //Associacio assoc = new Associacio(codi, responsable, data, associacions, nomAssociacions, nomAssociacions, nomAssociacions, valoracions, vegades);
+                //llistaAs.afegirAssoc(assoc);
+                Accio ac = new Accio(titol, responsable, posicions);
                 
-                Accio ac;
                 if (esXerrada) {
                     Data dataXerrada = new Data();
-                    dataXerrada.setData(data[2], data[1], data[0]);
-                    ac = new Xerrada(titol, responsable, dataXerrada, vegades, valoracions, llistaAs);
+                    dataXerrada.setData(Integer.parseInt(data[2]), Integer.parseInt(data[1]), Integer.parseInt(data[0]));
+                    ac = new Xerrada(titol, responsable, dataXerrada, NumAssistents, val, llistaAs);
                 } else {
                     Data dataDisseny = new Data();
-                    dataDisseny.setData(data[2], data[1], data[0]);
+                    dataDisseny.setData(Integer.parseInt(data[2]), Integer.parseInt(data[1]), Integer.parseInt(data[0]));
                     ac = new Demostracio(titol, responsable, dataDisseny, vegades, valida, valoracions, cost, llistaAs);
                 }
 
@@ -149,8 +142,14 @@ public class LlistaAccionsText {
             }
         } catch (IOException e) {
             System.out.println("No es pot carregar el fitxer: " + e.getMessage());
-        } catch (NumberFormatException e) {
-            System.out.println("Error en el format de dades numèriques: " + e.getMessage());
+        } finally {
+            if (br != null) {
+                try {
+                    br.close();
+                } catch (IOException e) {
+                    System.out.println("Error al tancar el fitxer: " + e.getMessage());
+                }
+            }
         }
     }
 

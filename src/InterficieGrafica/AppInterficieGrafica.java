@@ -101,7 +101,7 @@ public class AppInterficieGrafica extends JFrame {
 
         // Afegir entitats i activitats (exemple)
         llistaAssociacions.carregarAssociacions();
-        llistaAccions.carregarAccions();
+        //llistaAccions.carregarAccions();
 
         // Crear i mostrar la interfície gràfica
         AppInterficieGrafica app = new AppInterficieGrafica(llistaAccions, llistaAssociacions);

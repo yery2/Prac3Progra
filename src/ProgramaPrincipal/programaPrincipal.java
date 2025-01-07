@@ -212,7 +212,7 @@ public class programaPrincipal {
                     System.out.println("Detalls de la Xerrada després de modificar:");
                     System.out.println(xerrada1.toString());
                     break;*/
-                case 51:
+                case 51:/* 
                     System.out.println("\n!!!!!!!!!!!:");
                     System.out.println("51. Comprovació classe LlistaAccions:\n\n");
 
@@ -236,7 +236,7 @@ public class programaPrincipal {
                     // getters
                     System.out.println("\nProva dels getters:");
                     System.out.println("Nombre d'Accions: " + llistaAccions.getNumAccions());
-                    break;
+                    break;*/
 
                 case 52:
                     System.out.println("\n!!!!!!!!!!!:");

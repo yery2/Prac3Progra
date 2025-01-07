@@ -13,11 +13,13 @@ public class Xerrada extends Accio {
     private int nAssistents;
     private short valoracions;
     Membres[] membres = new Membres[nMembres];
+    private int[] posicionsAssociacions;
 
-    public Xerrada(String t, String r, Data d, int NumAssistents, short val, LlistaAssociacions llistaA) {
-        super(t, r, llistaA);
-        this.dataXerrada = d;
-        nAssistents = NumAssistents;
+    public Xerrada(String t, String r, Data d, int NumAssistents, short val, int[] posicionsAssociacions) {
+        super(t, r, posicionsAssociacions);
+        this.nAssistents = NumAssistents;
+        this.valoracions = val;
+        this.posicionsAssociacions = posicionsAssociacions;
         valoracions = val;
     }
 
@@ -52,7 +54,7 @@ public class Xerrada extends Accio {
     public Xerrada copia(){
         Xerrada copiaXerrada = new Xerrada(
             this.titol, this.responsable, 
-            this.dataXerrada, this.nAssistents, this.valoracions, this.llistaAss);
+            this.dataXerrada, this.nAssistents, this.valoracions, this.posicionsAssociacions);
         return copiaXerrada;
     }
 

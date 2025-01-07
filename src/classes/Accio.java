@@ -1,5 +1,6 @@
 package Classes;
 
+import GestioFitxers.LlistaAssociacionsSerial;
 import Llistes.LlistaAssociacions;
 
 /**
@@ -11,10 +12,12 @@ public class Accio {
     protected String codi = "";    // S'ha de fer metode que a partir de nom assoc. generi codi
     protected String titol;
     protected String responsable;
-    protected LlistaAssociacions llistaAss = new LlistaAssociacions();
+    protected LlistaAssociacionsSerial llistaAss = new LlistaAssociacionsSerial();
+    int[] posicionsAssociacions;
 
-    public Accio(String t, String r, LlistaAssociacions llistaAss) {//String = "1;4;5"
-        this.llistaAss = llistaAss;
+    public Accio(String t, String r, int[] posicionsAssociacions) {//String = "1;4;5"
+        this.llistaAss = new LlistaAssociacionsSerial();
+        this.llistaAss.carregarPosicionsAssociacions(posicionsAssociacions);
         codi = generarCodi(); 
         titol = t; 
         responsable = r; 
@@ -56,7 +59,7 @@ public class Accio {
     }
 
     public Accio copia(){
-        Accio copiaAccio = new Accio(titol, responsable, this.llistaAss);
+        Accio copiaAccio = new Accio(titol, responsable, posicionsAssociacions);
         return copiaAccio;
     }
 

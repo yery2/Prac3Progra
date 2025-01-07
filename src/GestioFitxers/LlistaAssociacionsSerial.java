@@ -152,4 +152,32 @@ public class LlistaAssociacionsSerial {
         }
         return null;
     }
+
+    /**
+     * Mètode per carregar les associacions des del fitxer en les posicions especificades i emmagatzemar-les en una llista.
+     * @param posicions un array d'enters que conté les línies del fitxer a extreure.
+     * @return una llista d'associacions.
+     */
+    public LlistaAssociacionsSerial carregarPosicionsAssociacions(int[] posicions) {
+        LlistaAssociacionsSerial llistaAssociacions = new LlistaAssociacionsSerial();
+        try (BufferedReader br = new BufferedReader(new FileReader(FILE_PATH))) {
+            String line;
+            int currentLine = 0;
+            int posIndex = 0;
+            while ((line = br.readLine()) != null && posIndex < posicions.length) {
+                if (currentLine == posicions[posIndex]) {
+                    String[] data = line.split(";");
+                    String[] membres = data[2].split(",");
+                    String[] titulacions = data[3].split(",");
+                    Associacio a = new Associacio(data[0], data[1], membres, titulacions, data[4], data[5], data[6], Integer.parseInt(data[7]), Integer.parseInt(data[8]));
+                    llistaAssociacions.afegirAssoc(a);
+                    posIndex++;
+                }
+                currentLine++;
+            }
+        } catch (IOException e) {
+            System.out.println("No es pot carregar el fitxer: " + e.getMessage());
+        }
+        return llistaAssociacions;
+    }
 }
