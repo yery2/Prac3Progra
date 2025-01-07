@@ -8,14 +8,15 @@ import java.util.ArrayList;
 import java.util.List;
 import Classes.*;
 import GestioFitxers.*;
+import Llistes.LlistaAccions;
 
 public class AppInterficieGrafica extends JFrame {
-    private LlistaAccionsText llistaAccions;
+    private LlistaAccions llistaAccions;
     private LlistaAssociacionsSerial llistaAssociacions;
     private JTextArea textArea;
     private List<JCheckBox> checkBoxes;
 
-    public AppInterficieGrafica(LlistaAccionsText llistaAccions, LlistaAssociacionsSerial llistaAssociacions) {
+    public AppInterficieGrafica(LlistaAccions llistaAccions, LlistaAssociacionsSerial llistaAssociacions) {
         this.llistaAccions = llistaAccions;
         this.llistaAssociacions = llistaAssociacions;
         initialize();
@@ -26,10 +27,12 @@ public class AppInterficieGrafica extends JFrame {
         setSize(1200, 800);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLayout(new BorderLayout());
-        
+
+        // Panel para los checkboxes de asociaciones
         JPanel panel = new JPanel();
         panel.setLayout(new GridLayout(0, 1));
 
+        // Crear checkboxes dinámicamente según las asociaciones
         checkBoxes = new ArrayList<>();
         for (int i = 0; i < llistaAssociacions.getNElem(); i++) {
             Associacio associacio = llistaAssociacions.getAssociacio(i);
@@ -40,10 +43,12 @@ public class AppInterficieGrafica extends JFrame {
             }
         }
 
+        // Scroll para checkboxes
         JScrollPane scrollPaneCheckBoxes = new JScrollPane(panel);
         scrollPaneCheckBoxes.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
         scrollPaneCheckBoxes.setPreferredSize(new Dimension(300, 800));
 
+        // Botón para mostrar demostraciones
         JButton button = new JButton("Mostrar Demostracions");
         button.addActionListener(new ActionListener() {
             @Override
@@ -52,67 +57,61 @@ public class AppInterficieGrafica extends JFrame {
             }
         });
 
+        // Panel para el botón
         JPanel buttonPanel = new JPanel();
         buttonPanel.add(button);
 
+        // TextArea para mostrar resultados
         textArea = new JTextArea();
         textArea.setEditable(false);
         JScrollPane scrollPaneTextArea = new JScrollPane(textArea);
 
+        // Añadir componentes al layout principal
         add(scrollPaneCheckBoxes, BorderLayout.WEST);
         add(buttonPanel, BorderLayout.NORTH);
         add(scrollPaneTextArea, BorderLayout.CENTER);
     }
- 
+
     private void mostrarDemostracions() {
-        System.out.println("ENTRE   AQUIIIIIIIIIIIIII");
-        LlistaAssociacionsSerial llistaCarregada1 = new LlistaAssociacionsSerial();
-        llistaCarregada1.carregarAssociacions();
-        System.out.println("Y AQUIIIIIIIIIIIIII");
-        textArea.setText("");
-        LlistaAssociacionsSerial selectedAssociacions = new LlistaAssociacionsSerial();
-        LlistaAccionsText selectedAccions = new LlistaAccionsText();
+        textArea.setText(""); // Limpiar el área de texto
+        List<String> selectedAssociacions = new ArrayList<>();
+
+        // Recoger las asociaciones seleccionadas
         for (JCheckBox checkBox : checkBoxes) {
             if (checkBox.isSelected()) {
-                for(int i=0; i<llistaAssociacions.getNElem(); i++){
-                    if(llistaAssociacions.getAssociacio(i).getNomAssociacio().equals(checkBox.getText())){
-                        selectedAssociacions.afegirAssoc(llistaAssociacions.getAssociacio(i));
+                selectedAssociacions.add(checkBox.getText());
+            }
+        }
+
+        // Filtrar y mostrar demostraciones relacionadas con las asociaciones seleccionadas
+        for (int i = 0; i < llistaAccions.getNumAccions(); i++) {
+            Accio accio = llistaAccions.getAccio(i);
+            if (accio instanceof Demostracio) {
+                Demostracio demostracio = (Demostracio) accio;
+                for (String nomAssociacio : demostracio.getNomAssociacions()) {
+                    if (selectedAssociacions.contains(nomAssociacio)) {
+                        textArea.append(demostracio.toString() + "\n\n");
+                        break; // Evitar duplicados
                     }
                 }
             }
         }
-/*
-        LlistaAssociacionsSerial selectedAssociacionsComp = new LlistaAssociacionsSerial();
-        for (int i=0; i<llistaAccions.getNElem(); i++){
-            if(llistaAccions.getAccio(i)){
-                selectedAccions.afegirAccio(llistaAccions.getAccio(i));
-            }
-        } */
-        /*
-        for (int i=0; i<llistaAccions.getNElem(); i++){
-            if(llistaAccions.getAccio(i).getAssociacio)){
-                selectedAccions.afegirAccio(llistaAccions.getAccio(i));
-            }
-        } */
-/*
-        for (Activitats activitat : llistaAccions.getLlistaActivitats()) {
-            if (activitat != null && activitat instanceof Demostracions) {
-                Demostracions demostracio = (Demostracions) activitat;
-                if (selectedAssociacions.isEmpty() || selectedAssociacions.contains(demostracio.getEntitat().getNomAssociacio())) {
-                    textArea.append(demostracio.toString() + "\n\n");
-                }
-            }
-        } */
+
+        // Si no hay resultados, mostrar mensaje
+        if (textArea.getText().isEmpty()) {
+            textArea.setText("No s'han trobat demostracions per a les associacions seleccionades.");
+        }
     }
 
     public static void main(String[] args) {
         // Crear llistes d'activitats i entitats
         LlistaAssociacionsSerial llistaAssociacions = new LlistaAssociacionsSerial();
-        LlistaAccionsText llistaAccions = new LlistaAccionsText();
+        LlistaAccions llistaAccions = new LlistaAccions();
+        LlistaAccionsText llistaAccionstxt = new LlistaAccionsText();
 
-        // Afegir entitats i activitats (exemple)
+        // Carregar associacions i accions
         llistaAssociacions.carregarAssociacions();
-        llistaAccions.carregarAccions();
+        llistaAccionstxt.carregarAccions(llistaAccions);
 
         // Crear i mostrar la interfície gràfica
         AppInterficieGrafica app = new AppInterficieGrafica(llistaAccions, llistaAssociacions);

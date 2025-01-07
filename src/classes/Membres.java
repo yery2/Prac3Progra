@@ -1,7 +1,5 @@
 package Classes;
 
-import Llistes.LlistaAssociacions;
-
 /**
  * @author Núria Yepes
  */
@@ -23,7 +21,6 @@ import Llistes.LlistaAssociacions;
     private boolean professor;
     private String aliesId;
     private String correu;
-    private LlistaAssociacions associacions;
     private int numAssociacions;
 
     /**
@@ -37,7 +34,6 @@ import Llistes.LlistaAssociacions;
         this.professor = false; 
         this.aliesId = ""; 
         this.correu = "";
-        this.associacions = null;
         this.numAssociacions = 0; 
     }
 

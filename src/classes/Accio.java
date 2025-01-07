@@ -1,7 +1,7 @@
 package Classes;
 
 import GestioFitxers.LlistaAssociacionsSerial;
-import Llistes.LlistaAssociacions;
+
 
 /**
  * @author Marc Badia, Pol Caballé
@@ -13,14 +13,13 @@ public class Accio {
     protected String titol;
     protected String responsable;
     protected LlistaAssociacionsSerial llistaAss = new LlistaAssociacionsSerial();
-    int[] posicionsAssociacions;
+    protected String[] nomAssociacions;
 
-    public Accio(String t, String r, int[] posicionsAssociacions) {//String = "1;4;5"
-        this.llistaAss = new LlistaAssociacionsSerial();
-        this.llistaAss.carregarPosicionsAssociacions(posicionsAssociacions);
+    public Accio(String t, String r,String[] nomAssociacions) {//String = "1;4;5"
         codi = generarCodi(); 
         titol = t; 
         responsable = r; 
+        llistaAss.carregarAssociacionsNom(nomAssociacions);
     }
 
     public String getCodi(){
@@ -33,6 +32,10 @@ public class Accio {
 
     public String getResponsable(){
         return responsable;
+    }
+
+    public String[] getNomAssociacions() {
+        return nomAssociacions;
     }
 
 
@@ -58,8 +61,12 @@ public class Accio {
                 '}';
     }
 
+    public String toStringCSV() {
+        return codi + ";" + titol + ";" + responsable + ";" + String.join(",", nomAssociacions);
+    }
+
     public Accio copia(){
-        Accio copiaAccio = new Accio(titol, responsable, posicionsAssociacions);
+        Accio copiaAccio = new Accio(titol, responsable, this.nomAssociacions);
         return copiaAccio;
     }
 

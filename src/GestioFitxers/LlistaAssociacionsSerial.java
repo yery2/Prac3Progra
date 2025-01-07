@@ -106,6 +106,30 @@ public class LlistaAssociacionsSerial {
         }
     }
 
+    public void carregarAssociacionsNom(String[] nomAssociacions) {
+        boolean trobat = false;
+        try (BufferedReader br = new BufferedReader(new FileReader(FILE_PATH))) {
+            String line;
+            for(int i = 0; i < nomAssociacions.length; i++){
+            while ((line = br.readLine()) != null && !trobat) {
+                String[] data = line.split(";");
+                String[] membres = data[2].split(",");
+                String[] titulacions = data[3].split(",");
+                Associacio a = new Associacio(data[0],data[1],
+                            membres,titulacions,data[4],data[5],data[6],
+                            Integer.parseInt(data[7]),Integer.parseInt(data[8]));
+                if(nomAssociacions[i].equals(a.getNomAssociacio())){
+                    trobat = true;
+                    afegirAssoc(a);
+                } 
+            }
+            }
+        } catch (IOException e) {
+            System.out.println("No es pot carregar el fitxer: " + e.getMessage());
+        }
+    }
+
+    
     public void guardarAssociacions() {
         try (BufferedWriter bw = new BufferedWriter(new FileWriter(FILE_PATH))) {
 
@@ -151,41 +175,5 @@ public class LlistaAssociacionsSerial {
             return llista[posicio];
         }
         return null;
-    }
-
-
-    /**
-     * Mètode per carregar les associacions des del fitxer en les posicions especificades i emmagatzemar-les en una llista.
-     * @param posicions un array d'enters que conté les línies del fitxer a extreure.
-     * @return una llista d'associacions.
-     */
-    public LlistaAssociacionsSerial carregarPosicionsAssociacions(int[] posicions) {
-        LlistaAssociacionsSerial llistaAssociacions = new LlistaAssociacionsSerial();
-        try (BufferedReader br = new BufferedReader(new FileReader(FILE_PATH))) {
-            String line;
-            int currentLine = 0;
-            int posIndex = 0;
-            while ((line = br.readLine()) != null && posIndex < posicions.length) {
-                if (currentLine == posicions[posIndex]) {
-                    String[] data = line.split(";");
-                    if (data.length < 9) {
-                        System.out.println("Línia incorrecta: " + line);
-                        posIndex++;
-                        continue; // Salta a la siguiente línea
-                    }
-                    String[] membres = data[2].isEmpty() ? new String[0] : data[2].split(",");
-                    String[] titulacions = data[3].isEmpty() ? new String[0] : data[3].split(",");
-                    Associacio a = new Associacio(data[0], data[1], membres, titulacions, data[4], data[5], data[6], Integer.parseInt(data[7]), Integer.parseInt(data[8]));
-                    llistaAssociacions.afegirAssoc(a);
-                    posIndex++;
-                }
-                currentLine++;
-            }
-        } catch (IOException e) {
-            System.out.println("No es pot carregar el fitxer: " + e.getMessage());
-        } catch (NumberFormatException e) {
-            System.out.println("Error en el format numèric: " + e.getMessage());
-        }
-        return llistaAssociacions;
     }
 }
