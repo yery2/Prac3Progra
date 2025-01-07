@@ -26,7 +26,7 @@ public class AppInterficieGrafica extends JFrame {
         setSize(1200, 800);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLayout(new BorderLayout());
-
+        System.out.println("AQUI SI");
         JPanel panel = new JPanel();
         panel.setLayout(new GridLayout(0, 1));
 
@@ -65,8 +65,10 @@ public class AppInterficieGrafica extends JFrame {
     }
  
     private void mostrarDemostracions() {
+        System.out.println("ENTRE   AQUIIIIIIIIIIIIII");
         LlistaAssociacionsSerial llistaCarregada1 = new LlistaAssociacionsSerial();
         llistaCarregada1.carregarAssociacions();
+        System.out.println("Y AQUIIIIIIIIIIIIII");
         textArea.setText("");
         LlistaAssociacionsSerial selectedAssociacions = new LlistaAssociacionsSerial();
         LlistaAccionsText selectedAccions = new LlistaAccionsText();
