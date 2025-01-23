@@ -1,5 +1,6 @@
 package Classes;
 
+import Llistes.LlistaMembres;
 
 /**
  * @author Marc Badia
@@ -7,23 +8,21 @@ package Classes;
 
 public class Xerrada extends Accio {
     
-    private static short nMembres = 3;
     private Data dataXerrada;
     private int nAssistents;
     private short valoracions;
-    Membres[] membres = new Membres[nMembres];
+    private LlistaMembres llistaMembres; 
 
-    public Xerrada(String t, String r, Data d, int NumAssistents, short val, String[] nomAssociacions) {
-        super(t, r, nomAssociacions);
+    
+    public Xerrada(String t, String r, Data d, int NumAssistents, short val, String[] nomAssociacions, LlistaMembres llistaMembres) {
+        super(t, r, nomAssociacions); 
         this.dataXerrada = d;
-        nAssistents = NumAssistents;
-        valoracions = val;
-    }
+        this.nAssistents = NumAssistents;
+        this.valoracions = val;
+        this.llistaMembres = llistaMembres; 
+    } 
 
-    public void setNMembres (short n) {
-        nMembres = n;
-    }
-
+    
     public Data getDataXerrada() {
         return dataXerrada;
     }
@@ -48,24 +47,25 @@ public class Xerrada extends Accio {
         this.valoracions = valoracions;
     }
 
-    public Xerrada copia(){
-        Xerrada copiaXerrada = new Xerrada(
-            this.titol, this.responsable, 
-            this.dataXerrada, this.nAssistents, this.valoracions, this.nomAssociacions);
-        return copiaXerrada;
+    // Métode de copia
+    public Xerrada copia() {
+    
+        return new Xerrada(this.titol, this.responsable, this.dataXerrada, this.nAssistents, this.valoracions, this.nomAssociacions, this.llistaMembres.copia());
     }
 
-    // Mètode per comprovar si un membre està en aquesta xerrada
+    
     public boolean esMembre(Membres membre) {
         boolean esMembre = false;
-        for (int i = 0; i < nMembres; i++) {
-            if (membres[i] != null && membres[i].getAliesId().equals(membre.getAliesId())) {
-                esMembre = true;
+        for (int i = 0; i < llistaMembres.getNumMembres(); i++) {
+            Membres membreActual = llistaMembres.getMembre(i); 
+            if (membreActual != null && membreActual.getAliesId().equals(membre.getAliesId())) {
+                esMembre = true; 
             }
         }
-        return esMembre;
+        return esMembre; 
     }
 
+    // Métode toString 
     public String toString() {
         return "Xerrada [codi=" + codi 
         + ", titol=" + titol 
@@ -74,5 +74,4 @@ public class Xerrada extends Accio {
         + ", nAssistents=" + nAssistents 
         + ", valoracions=" + valoracions + "]";
     }
-    
 }

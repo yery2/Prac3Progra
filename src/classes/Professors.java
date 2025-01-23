@@ -1,6 +1,6 @@
 package Classes;
 /**
- * @author Yerai Zarza
+ * @author Yeray Zarza
  */
 
 public class Professors extends Membres {

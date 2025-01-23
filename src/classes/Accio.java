@@ -1,36 +1,32 @@
 package Classes;
 
-import GestioFitxers.LlistaAssociacionsSerial;
-
-
 /**
  * @author Marc Badia, Pol Caballé
  */
 
-public class Accio {
-    
-    protected String codi = "";    // S'ha de fer metode que a partir de nom assoc. generi codi
+public abstract class Accio {
+
+    protected String codi = "";  // S'ha de fer mètode que a partir de nom assoc. generi codi
     protected String titol;
     protected String responsable;
-    protected LlistaAssociacionsSerial llistaAss = new LlistaAssociacionsSerial();
-    protected String[] nomAssociacions;
+    protected String[] nomAssociacions;  // Lista de nombres de asociaciones
 
-    public Accio(String t, String r,String[] nomAssociacions) {//String = "1;4;5"
-        codi = generarCodi(); 
-        titol = t; 
-        responsable = r; 
-        llistaAss.carregarAssociacionsNom(nomAssociacions);
+    public Accio(String t, String r, String[] nomAssociacions) {
+        this.codi = generarCodi(nomAssociacions);  // Genera el código usando el nombre de la primera asociación
+        this.titol = t; 
+        this.responsable = r; 
+        this.nomAssociacions = nomAssociacions;
     }
 
-    public String getCodi(){
+    public String getCodi() {
         return codi;
     }
 
-    public String getTitol(){
+    public String getTitol() {
         return titol;
     }
 
-    public String getResponsable(){
+    public String getResponsable() {
         return responsable;
     }
 
@@ -38,36 +34,37 @@ public class Accio {
         return nomAssociacions;
     }
 
+    /**
+     * Genera el codi de la acció basat en el nom de la primera associació.
+     * Es fa amb la primer 3 lletres del nom de l'associació i després el nombre d'accions incrementat.
+     */
+    public String generarCodi(String[] nomAssociacions) {
+        String digits = "";
+        if (nomAssociacions != null && nomAssociacions.length > 0) {
+            // Obtenim els primers tres caràcters del primer nom d'associació
+            String nomAssoc = nomAssociacions[0];
+            for (int i = 0; i < nomAssoc.length() && i < 3; i++) {
+                digits += nomAssoc.charAt(i);
+            }
 
-    public String generarCodi(){
-        String digits = ""; 
-        for (int i = 0; i < llistaAss.getNomAssociacioPosicio(0).length() && i<3; i++) {
-            char c = llistaAss.getNomAssociacioPosicio(0).charAt(i); 
-            digits += c; 
+            // Aquí puedes agregar la lógica de incrementar el número de acciones si es necesario
+            // En este caso solo usamos el valor fijo 99 como ejemplo
+            digits += "99";  // Esto puede cambiar dependiendo de cómo manejas las acciones
         }
-        llistaAss.incrementarNombreAccionsPosicio(0);
-        int val = 99+llistaAss.getNumAccionsPosicio(0);
-        digits += val;
         return digits;
     }
 
+    @Override
     public String toString() {
-
         return "Accio{" +
                 "codi='" + codi + '\'' +
                 ", titol='" + titol + '\'' +
                 ", responsable='" + responsable + '\'' +
-                ", nAssoc organitzadores=" + llistaAss.getNElem() +
+                ", nAssoc organitzadors=" + (nomAssociacions != null ? nomAssociacions.length : 0) +
                 '}';
     }
 
     public String toStringCSV() {
         return codi + ";" + titol + ";" + responsable + ";" + String.join(",", nomAssociacions);
     }
-
-    public Accio copia(){
-        Accio copiaAccio = new Accio(titol, responsable, this.nomAssociacions);
-        return copiaAccio;
-    }
-
 }

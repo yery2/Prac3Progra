@@ -1,7 +1,5 @@
 package Classes;
 
-
-
 /**
  * @author Pol Caballé
  */
@@ -12,8 +10,8 @@ public class Demostracio extends Accio {
     private short nVegades;
     private int cost;
 
-    public Demostracio(String t, String r, Data d, boolean valida, short nVegades, int cost, String[] nomAssociacions) {
-        super(t, r, nomAssociacions);
+    public Demostracio(String t, String r, Data d, boolean valida, short nVegades, int cost,String[] nomAssociacions) {
+        super(t, r,nomAssociacions);
         this.dataDisseny = d; this.valida = valida; this.nVegades = nVegades; this.cost = cost;
     }
 
@@ -32,5 +30,10 @@ public class Demostracio extends Accio {
     public int getCost() {
         return cost;
     }
+
+    public String[] getNomAssociacions(){
+        return nomAssociacions;
+    }
+
 
 }
